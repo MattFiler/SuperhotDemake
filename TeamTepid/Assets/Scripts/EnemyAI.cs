@@ -24,22 +24,16 @@ public class EnemyAI : MonoBehaviour
     private bool shouldChase = false;
     private float aggroTimeElapsed = 0;
 
-    private void Start()
-    {
-        if(waypoints.Length == 1)
-        {
-            Debug.Log("WARNING: AI Only has 1 waypoint, this will cause errors! Have 0 waypoints if you want the AI to stand still.");
-        }
-    }
-
     private void Update()
     {
         if(inCombat)
         {
+            // Stop/Start chasing depending on the distance to the player
             shouldChase = Vector3.Distance(transform.position, player.transform.position) > CombatRange;
         }
         else if (Vector3.Distance(transform.position, player.transform.position) <= DetectionRadius)
         {
+            // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
             aggroTimeElapsed += Time.deltaTime;
             if (aggroTimeElapsed >= aggroDelay)
             {
@@ -51,6 +45,7 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Chase/Fighting Code
         if(inCombat)
         {
             if (shouldChase)
@@ -59,12 +54,15 @@ public class EnemyAI : MonoBehaviour
                 moveVector.Normalize();
                 moveVector *= runSpeed / 50;
                 transform.position += moveVector;
+                var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
             else
             {
                 Debug.Log("PEW");
             }
         }
+        // Following waypoints code
         else if(waypoints.Length > 0 && waypointIndex < waypoints.Length)
         {
             // Move the player towards the next waypoint
@@ -72,6 +70,9 @@ public class EnemyAI : MonoBehaviour
             moveVector.Normalize();
             moveVector *= walkSpeed / 50;
             transform.position += moveVector;
+
+            var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             // If close to the waypoint, move onto the next one
             if (Vector3.Distance(waypoints[waypointIndex], transform.position) < 0.5f)
