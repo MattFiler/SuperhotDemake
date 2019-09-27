@@ -17,7 +17,6 @@ public class ThePlayer : MonoBehaviour
     /* Handle player input & adjust game speed */
     void Update()
     {
-        Debug.Log(thisRigidbody.velocity);
         //Player input: forwards
         if (Input.GetKey(KeyCode.W))
         {
