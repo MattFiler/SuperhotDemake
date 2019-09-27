@@ -8,6 +8,7 @@ public class TextTimer : MonoBehaviour
     [SerializeField] private string textString = "";
     [SerializeField] private float timeBetweenText = 1.0f;
 
+    private GameObject childObject;
     private Text textUI;
     private AudioSource audioSource;
 
@@ -20,6 +21,7 @@ public class TextTimer : MonoBehaviour
     /* Grab appropriate objects */
     private void Start()
     {
+        childObject = gameObject.transform.GetChild(0).gameObject;
         textUI = gameObject.transform.GetChild(0).GetComponent<Text>();
         audioSource = gameObject.transform.GetChild(0).GetComponent<AudioSource>();
         textToRender = new List<string>(textString.Trim().ToUpper().Split(' '));
@@ -32,6 +34,7 @@ public class TextTimer : MonoBehaviour
         {
             textUI.text = textToRender[currentTextIndex];
             textUI.color = new Color(0.2784314f, 0.003921569f, 0.4784314f, 1.0f);
+            childObject.transform.localScale += new Vector3(0.002f, 0.002f, 0.002f);
 
             if (currentIntervalTimer >= timeBetweenText)
             {
@@ -42,6 +45,7 @@ public class TextTimer : MonoBehaviour
                     shouldTrigger = false;
                 }
                 gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
+                childObject.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             }
             else if (currentIntervalTimer + Time.deltaTime >= timeBetweenText)
             {
