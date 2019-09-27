@@ -21,7 +21,7 @@ public class UseProp : MonoBehaviour
     {
         if(currentProp != null)
         {
-            if(Input.GetKeyDown("e"))
+            if(Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if(!pickedUpProp)
                 {

@@ -9,8 +9,8 @@ public class PropInteraction : MonoBehaviour
     [Tooltip("The amount of rotation per step")]
     [SerializeField] public float rotationStep = 5;
     public Vector2 defaultThrowDirection = Vector2.right;
+    public bool propThrown = false;
 
-    private bool propThrown = false;
     private bool startSpin = false;
     private bool destroyed = false;
 
