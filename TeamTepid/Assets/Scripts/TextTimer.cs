@@ -67,9 +67,23 @@ public class TextTimer : MonoBehaviour
     }
 
     /* Set a new text string to animate in code */
-    public void SetText(string text)
+    public void SetText(string text, float interval = 1.0f)
     {
+        if (IsPlaying())
+        {
+            Debug.LogWarning("Tried to set new text on already playing text!");
+            return;
+        }
+
         textToRender = new List<string>(text.Trim().ToUpper().Split(' '));
+        timeBetweenText = interval;
+    }
+
+    /* Set a new text string and play immediately */
+    public void SetTextAndPlay(string text, float interval = 1.0f)
+    {
+        SetText(text, interval);
+        Play();
     }
 
     /* Play the text */
