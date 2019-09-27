@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UseProp : MonoBehaviour
 {
-    [SerializeField] public float throwSpeed = 0;
+    public float throwSpeed = 0;
 
     private bool pickedUpProp;
-    private PropInteraction currentProp;
+    [SerializeField]  private PropInteraction currentProp;
 
 
     // Start is called before the first frame update
@@ -35,6 +35,10 @@ public class UseProp : MonoBehaviour
                     //If player is not moving then throw is set to a default direction
                     currentProp.ThrowProp(currentDirection == Vector2.zero ? currentProp.defaultThrowDirection : currentDirection, throwSpeed);
                 }
+            }
+            else if(Input.GetKeyDown(KeyCode.Space))
+            {
+                currentProp.UseProp();
             }
         }
     }

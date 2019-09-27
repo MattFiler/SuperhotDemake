@@ -4,63 +4,27 @@ using UnityEngine;
 
 public class PropInteraction : MonoBehaviour
 {
+    public enum PropType { SIMPLE, MELEE, RANGED }
+    [Tooltip("The type of prop: simple - no use, melee - melee attack, ranged - shoot attack")]
+    public PropType propType = PropType.SIMPLE;
     [Tooltip("The delay between rotaion steps - used to make rotaion seem janky")]
-    [SerializeField] public float rotationDelay = 0.5f;
+    public float rotationDelay = 0.5f;
     [Tooltip("The amount of rotation per step")]
-    [SerializeField] public float rotationStep = 5;
+    public float rotationStep = 5;
     public Vector2 defaultThrowDirection = Vector2.right;
     public bool propThrown = false;
 
-    private bool startSpin = false;
-    private bool destroyed = false;
 
-    //private Transform playerTransform;
-    //private bool startThrow = false;
+    private AttackWithProp attack;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Start()
     {
-        if (startSpin)
+        if(GetComponent<AttackWithProp>() != null)
         {
-            StartCoroutine(SpinProp());
-            startSpin = false;
-        }
-
-    }
-
-    //public void ThrowProp(Vector2 throwDirection)
-    //{
-    //    
-    //    transform.Rotate(new Vector3(0, 0, rotationStep));
-    //    StartCoroutine(SpinProp());
-    //    startThrow = false;
-    //}
-
-    IEnumerator SpinProp()
-    {
-        while (!destroyed)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + rotationStep);
-            yield return new WaitForSeconds(rotationDelay);
+            attack = GetComponent<AttackWithProp>();
+            propType = PropType.MELEE;
         }
     }
-
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        playerTransform = collision.transform;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        playerTransform = null;
-    //    }
-    //}
 
     public void PickUpProp(Transform pickUpTransform)
     {
@@ -71,6 +35,37 @@ public class PropInteraction : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
         propThrown = true;
-        startSpin = true;
+        StartCoroutine(SpinProp());
+    }
+
+    IEnumerator SpinProp()
+    {
+        while (propThrown)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + rotationStep);
+            yield return new WaitForSeconds(rotationDelay);
+        }
+
+        yield return null;
+    }
+
+    public void UseProp()
+    {
+        if(attack != null)
+        {
+            if (attack.canAttack)
+            {
+                attack.startAttack();
+                StartCoroutine(AttackCooldown());
+                attack.canAttack = false;
+            }
+        }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attack.attackCooldown);
+        attack.canAttack = true;
+        Debug.Log("Can Attack");
     }
 }

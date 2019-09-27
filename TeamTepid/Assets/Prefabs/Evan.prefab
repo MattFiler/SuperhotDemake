@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 4704154745903779265}
   - component: {fileID: 6966025224502040941}
   - component: {fileID: 6583372967527227064}
+  - component: {fileID: 5472962844829319756}
   m_Layer: 0
   m_Name: Temp Prop
   m_TagString: Untagged
@@ -264,6 +265,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91a684e44ea385b448456e3ae401603f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5472962844829319756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112264769039837652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc69b4c3d2b5ef541bb6d9e0af03b6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7917958185236695867
