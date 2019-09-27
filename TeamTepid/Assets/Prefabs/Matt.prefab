@@ -411,6 +411,11 @@ PrefabInstance:
       propertyPath: textToRender.Array.data[4]
       value: DISPLAY
       objectReference: {fileID: 0}
+    - target: {fileID: 8682925474008754358, guid: b1a20b771c953da4481fdefbd327b8a2,
+        type: 3}
+      propertyPath: textString
+      value: Some Example Text To Display
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1a20b771c953da4481fdefbd327b8a2, type: 3}
 --- !u!224 &5683167718812722272 stripped

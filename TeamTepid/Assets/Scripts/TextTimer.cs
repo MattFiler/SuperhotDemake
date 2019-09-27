@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class TextTimer : MonoBehaviour
 {
-    [SerializeField] private List<string> textToRender = new List<string>();
+    [SerializeField] private string textString = "";
     [SerializeField] private float timeBetweenText = 1.0f;
 
     private Text textUI;
     private AudioSource audioSource;
 
+    private List<string> textToRender = new List<string>();
     private int currentTextIndex = 0;
     private float currentTextTimer = 0.0f;
     private float currentIntervalTimer = 0.0f;
@@ -21,6 +22,7 @@ public class TextTimer : MonoBehaviour
     {
         textUI = gameObject.transform.GetChild(0).GetComponent<Text>();
         audioSource = gameObject.transform.GetChild(0).GetComponent<AudioSource>();
+        textToRender = new List<string>(textString.Trim().ToUpper().Split(' '));
     }
 
     /* If playing, handle logic */
@@ -29,6 +31,7 @@ public class TextTimer : MonoBehaviour
         if (shouldTrigger && currentTextTimer <= textToRender.Count * timeBetweenText)
         {
             textUI.text = textToRender[currentTextIndex];
+            textUI.color = new Color(0.2784314f, 0.003921569f, 0.4784314f, 1.0f);
 
             if (currentIntervalTimer >= timeBetweenText)
             {
@@ -39,6 +42,10 @@ public class TextTimer : MonoBehaviour
                     shouldTrigger = false;
                 }
                 gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
+            }
+            else if (currentIntervalTimer + Time.deltaTime >= timeBetweenText)
+            {
+                textUI.color = Color.white;
             }
 
             currentTextTimer += Time.deltaTime;
