@@ -18,13 +18,17 @@ public class TextTimer : MonoBehaviour
     private float currentIntervalTimer = 0.0f;
     private bool shouldTrigger = false;
 
-    /* Grab appropriate objects */
+    /* Grab appropriate objects and parse text from editor */
     private void Start()
     {
         childObject = gameObject.transform.GetChild(0).gameObject;
         textUI = gameObject.transform.GetChild(0).GetComponent<Text>();
         audioSource = gameObject.transform.GetChild(0).GetComponent<AudioSource>();
-        textToRender = new List<string>(textString.Trim().ToUpper().Split(' '));
+
+        if (textString != "")
+        {
+            textToRender = new List<string>(textString.Trim().ToUpper().Split(' '));
+        }
     }
 
     /* If playing, handle logic */
@@ -60,6 +64,12 @@ public class TextTimer : MonoBehaviour
             shouldTrigger = false;
             textUI.text = "";
         }
+    }
+
+    /* Set a new text string to animate in code */
+    public void SetText(string text)
+    {
+        textToRender = new List<string>(text.Trim().ToUpper().Split(' '));
     }
 
     /* Play the text */
