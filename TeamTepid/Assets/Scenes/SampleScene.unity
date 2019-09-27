@@ -409,10 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304f82b3f01f2654b88e00949a34cc5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwDirection: {x: 1, y: 0}
-  throwSpeed: 7
   rotationDelay: 0
   rotationStep: 10
+  defaultThrowDirection: {x: 1, y: 0}
 --- !u!1 &1986059028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7917958185236695867, guid: ec0949b51df1c5542905a9aa68c7630b,
@@ -481,7 +480,7 @@ PrefabInstance:
     - target: {fileID: 8469122737835896118, guid: 77b16f8ed6aa0ea4ebb1bf764152308a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3704568391900229511, guid: 77b16f8ed6aa0ea4ebb1bf764152308a,
         type: 3}
