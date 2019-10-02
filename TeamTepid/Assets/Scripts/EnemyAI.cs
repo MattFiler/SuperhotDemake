@@ -19,6 +19,10 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("The range at which the AI will attack the player, if under this range the AI will run towards the player.")]
     public float CombatRange = 10;
 
+    [SerializeField] private GameObject ShotgunShot;
+    private float timeSinceFired = 0.0f;
+    private bool didShoot = false;
+
     private int waypointIndex = 0;
     private bool inCombat = false;
     private bool shouldChase = false;
@@ -26,6 +30,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (didShoot)
+        {
+            ShotgunShot.SetActive(true);
+            timeSinceFired += Time.deltaTime;
+            if (timeSinceFired >= 0.5f) {
+                ShotgunShot.SetActive(false);
+                didShoot = false;
+                timeSinceFired = 0.0f;
+            }
+        }
+
         if(inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
@@ -57,9 +72,9 @@ public class EnemyAI : MonoBehaviour
                 var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
-            else
+            else if (!didShoot)
             {
-                Debug.Log("PEW");
+                didShoot = true;
             }
         }
         // Following waypoints code
