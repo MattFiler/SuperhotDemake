@@ -34,6 +34,7 @@ public class PropInteraction : MonoBehaviour
     public void PickUpProp(Transform pickUpTransform)
     {
         transform.parent = pickUpTransform;
+        transform.position = pickUpTransform.Find("PropPos").position;
     }
 
     public void ThrowProp(Vector2 throwDirection, float throwSpeed)
