@@ -11,11 +11,11 @@ public class PropInteraction : MonoBehaviour
     public float rotationDelay = 0.5f;
     [Tooltip("The amount of rotation per step")]
     public float rotationStep = 5;
-    public Vector2 defaultThrowDirection = Vector2.right;
+    public Vector2 defaultUseDirection = Vector2.right;
     public bool propThrown = false;
 
-
     private AttackWithProp attack;
+    private ShootWithProp shoot;
 
     private void Start()
     {
@@ -23,6 +23,11 @@ public class PropInteraction : MonoBehaviour
         {
             attack = GetComponent<AttackWithProp>();
             propType = PropType.MELEE;
+        }
+        else if(GetComponent<ShootWithProp>() != null)
+        {
+            shoot = GetComponent<ShootWithProp>();
+            propType = PropType.RANGED;
         }
     }
 
@@ -33,6 +38,7 @@ public class PropInteraction : MonoBehaviour
 
     public void ThrowProp(Vector2 throwDirection, float throwSpeed)
     {
+        gameObject.AddComponent<Rigidbody2D>();
         GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
         propThrown = true;
         StartCoroutine(SpinProp());
@@ -49,23 +55,40 @@ public class PropInteraction : MonoBehaviour
         yield return null;
     }
 
-    public void UseProp()
+    public void UseProp(Vector2 direction)
     {
         if(attack != null)
         {
             if (attack.canAttack)
             {
                 attack.startAttack();
-                StartCoroutine(AttackCooldown());
                 attack.canAttack = false;
+                StartCoroutine(Cooldown());
             }
+        }
+        else if(shoot != null)
+        {
+            shoot.startShoot(direction);
+            shoot.canShoot = false;
+            StartCoroutine(Cooldown());
         }
     }
 
-    IEnumerator AttackCooldown()
+    IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(attack.attackCooldown);
-        attack.canAttack = true;
-        Debug.Log("Can Attack");
+        if(propType == PropType.MELEE)
+        {
+            yield return new WaitForSeconds(attack.attackCooldown);
+            attack.canAttack = true;
+            Debug.Log("Can Attack");
+        }
+        else if(propType == PropType.RANGED)
+        {
+            yield return new WaitForSeconds(shoot.shootCooldown);
+            shoot.canShoot = true;
+            Debug.Log("Can Attack");
+        }
+
+        
     }
 }

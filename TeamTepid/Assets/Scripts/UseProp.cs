@@ -7,7 +7,7 @@ public class UseProp : MonoBehaviour
     public float throwSpeed = 0;
 
     private bool pickedUpProp;
-    [SerializeField]  private PropInteraction currentProp;
+    [SerializeField]  private PropInteraction adjacentProp;
 
 
     // Start is called before the first frame update
@@ -19,43 +19,58 @@ public class UseProp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentProp != null)
+        if (adjacentProp != null)
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if(!pickedUpProp)
+                if (!pickedUpProp)
                 {
-                    currentProp.PickUpProp(transform);
+                    adjacentProp.PickUpProp(transform);
                     pickedUpProp = true;
                 }
                 else
                 {
+                    Debug.Log("Throw Prop");
                     pickedUpProp = false;
                     Vector2 currentDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                     //If player is not moving then throw is set to a default direction
-                    currentProp.ThrowProp(currentDirection == Vector2.zero ? currentProp.defaultThrowDirection : currentDirection, throwSpeed);
+                    adjacentProp.ThrowProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection, throwSpeed);
                 }
             }
-            else if(Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) && HasProp())
             {
-                currentProp.UseProp();
+                Vector2 currentDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                adjacentProp.UseProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Prop"))
+        if (!pickedUpProp && collision.gameObject.CompareTag("Prop"))
         {
-            currentProp = collision.GetComponent<PropInteraction>();
+            adjacentProp = collision.GetComponent<PropInteraction>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Prop"))
+        if (!pickedUpProp && collision.gameObject.CompareTag("Prop"))
         {
-            currentProp = null;
+            adjacentProp = null;
         }
+    }
+
+    private bool HasProp()
+    {
+        foreach(Transform child in transform)
+        {
+            if(child.CompareTag("Prop"))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

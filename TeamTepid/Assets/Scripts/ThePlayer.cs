@@ -88,7 +88,7 @@ public class ThePlayer : MonoBehaviour
         float normalisedVelocityBothDirs = normalisedVelocityX + normalisedVelocityY;
         if (normalisedVelocityBothDirs >= 1.0f) { normalisedVelocityBothDirs = 1.0f; }
         if (normalisedVelocityBothDirs <= 0.1f) { normalisedVelocityBothDirs = 0.1f; }
-        Debug.Log("GAME TIME IS: " + normalisedVelocityBothDirs);
+        //Debug.Log("GAME TIME IS: " + normalisedVelocityBothDirs);
         Time.timeScale = normalisedVelocityBothDirs;
         //Time.fixedDeltaTime = Time.timeScale;
     }
