@@ -51,13 +51,13 @@ public class TextTimer : MonoBehaviour
                 gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
                 childObject.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             }
-            else if (currentIntervalTimer + Time.deltaTime >= timeBetweenText)
+            else if (currentIntervalTimer + Time.unscaledDeltaTime >= timeBetweenText)
             {
                 textUI.color = Color.white;
             }
 
-            currentTextTimer += Time.deltaTime;
-            currentIntervalTimer += Time.deltaTime;
+            currentTextTimer += Time.unscaledDeltaTime;
+            currentIntervalTimer += Time.unscaledDeltaTime;
         }
         else
         {

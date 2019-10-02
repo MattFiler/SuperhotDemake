@@ -28,7 +28,7 @@ public class TextShow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
         if(startShowing)
         {
             if (timeBetweenText <= timer)

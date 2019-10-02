@@ -24,7 +24,7 @@ public class LoadIn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
         if(startLoadIn)
         {
