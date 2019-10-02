@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,17 @@ public class ThePlayer : MonoBehaviour
     /* Handle player input & adjust game speed */
     void Update()
     {
+
+        //FOR REFERENCE
+        if (Input.GetButton("NES BUTTON B"))
+        {
+            Debug.Log("NES BUTTON B");
+        }
+        if (Input.GetButton("NES BUTTON A"))
+        {
+            Debug.Log("NES BUTTON A");
+        }
+
         //Player input: forwards
         if (Input.GetAxis("Vertical") >= 0)
         {
