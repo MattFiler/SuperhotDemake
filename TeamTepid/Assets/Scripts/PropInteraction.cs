@@ -19,12 +19,12 @@ public class PropInteraction : MonoBehaviour
 
     private void Start()
     {
-        if(GetComponent<AttackWithProp>() != null)
+        if (GetComponent<AttackWithProp>() != null)
         {
             attack = GetComponent<AttackWithProp>();
             propType = PropType.MELEE;
         }
-        else if(GetComponent<ShootWithProp>() != null)
+        else if (GetComponent<ShootWithProp>() != null)
         {
             shoot = GetComponent<ShootWithProp>();
             propType = PropType.RANGED;
@@ -35,10 +35,25 @@ public class PropInteraction : MonoBehaviour
     {
         transform.parent = pickUpTransform;
         transform.position = pickUpTransform.Find("PropPos").position;
+
+        int index = 0;
+
+        if(attack != null)
+        {
+            index = (int)attack.weaponType;
+        }
+        else if(shoot != null)
+        {
+            index = (int)shoot.gunType;
+        }
+
+        pickUpTransform.GetComponent<Animator>().SetInteger("Weapon Index", index);
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void ThrowProp(Vector2 throwDirection, float throwSpeed)
     {
+        GetComponent<SpriteRenderer>().enabled = true;
         gameObject.AddComponent<Rigidbody2D>();
         GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
         propThrown = true;
@@ -58,7 +73,7 @@ public class PropInteraction : MonoBehaviour
 
     public void UseProp(Vector2 direction)
     {
-        if(attack != null)
+        if (attack != null)
         {
             if (attack.canAttack)
             {
@@ -67,7 +82,7 @@ public class PropInteraction : MonoBehaviour
                 StartCoroutine(Cooldown());
             }
         }
-        else if(shoot != null)
+        else if (shoot != null)
         {
             shoot.startShoot(direction);
             shoot.canShoot = false;
@@ -75,16 +90,27 @@ public class PropInteraction : MonoBehaviour
         }
     }
 
+    public void StopPropUse()
+    {
+        if(shoot != null && shoot.gunType == ShootWithProp.GunType.ASSAULT_RIFLE)
+        {
+            shoot.setStopShooting(true);
+        }
+    }
+
+
     IEnumerator Cooldown()
     {
         if(propType == PropType.MELEE)
         {
+            yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(attack.attackCooldown);
             attack.canAttack = true;
             Debug.Log("Can Attack");
         }
         else if(propType == PropType.RANGED)
         {
+            yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(shoot.shootCooldown);
             shoot.canShoot = true;
             Debug.Log("Can Attack");

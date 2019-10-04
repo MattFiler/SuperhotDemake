@@ -9,6 +9,9 @@ public class AttackWithProp : MonoBehaviour
     [Tooltip("The time delay between attacks")]
     public float attackCooldown = 0;
 
+    public enum WeaponType {BOTTLE = 1, KATANA = 2 };
+    public WeaponType weaponType;
+
     public bool attacking = false;
     public bool canAttack = true;
     private bool weaponColliding = false;
