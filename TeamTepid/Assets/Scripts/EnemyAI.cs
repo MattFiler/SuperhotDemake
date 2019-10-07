@@ -130,7 +130,7 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 // Attack code
-                GetComponentInChildren<PropInteraction>().UseProp(moveVector);
+                //GetComponentInChildren<PropInteraction>().UseProp(moveVector);
             }
         }
         // Following waypoints code
