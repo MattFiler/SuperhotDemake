@@ -5,12 +5,16 @@ using UnityEngine;
 public class LevelLoader : MonoSingleton<LevelLoader>
 {
     [SerializeField] private List<GameObject> LevelPrefabs;
+    [SerializeField] private List<string> LevelNames;
+    [SerializeField] private List<float> LevelTimesToAimFor = new List<float>();
+
     private GameObject CurrentLevel;
     private int CurrentLevelIndex = 0;
 
     /* On start of game, load level 0 */
     private void Start()
     {
+        ScoreManager.Instance.LevelTargetTime = LevelTimesToAimFor;
         LoadNewLevel(0);
     }
 
@@ -44,8 +48,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         CurrentLevelIndex = index;
 
         ScoreManager.Instance.ClearTimeScore();
-
-        TextTimer.Instance.SetTextAndPlay("LEVEL " + (index + 1), 2);
+        TextTimer.Instance.SetTextAndPlay(LevelNames[index], 2);
     }
 
     /* Return the current level as a GameObject */

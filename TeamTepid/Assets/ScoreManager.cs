@@ -9,7 +9,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [SerializeField] private GameObject endGameScoreUI;
     private float totalScore = 0;
 
-    [SerializeField] private List<float> LevelTargetTime = new List<float>();
+    [HideInInspector] public List<float> LevelTargetTime = new List<float>();
     private float timeInLevel = 0.0f;
 
     /* Show the in-game UI to start with */

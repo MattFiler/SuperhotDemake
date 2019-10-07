@@ -37,7 +37,7 @@ public class TextTimer : MonoSingleton<TextTimer>
         if (shouldTrigger && currentTextTimer <= textToRender.Count * timeBetweenText)
         {
             textUI.text = textToRender[currentTextIndex];
-            textUI.color = new Color(0.2784314f, 0.003921569f, 0.4784314f, 1.0f);
+            textUI.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
             childObject.transform.localScale += new Vector3(0.002f, 0.002f, 0.002f);
 
             if (currentIntervalTimer >= timeBetweenText)
@@ -49,7 +49,7 @@ public class TextTimer : MonoSingleton<TextTimer>
                     shouldTrigger = false;
                 }
                 gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
-                childObject.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                childObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             }
             else if (currentIntervalTimer + Time.unscaledDeltaTime >= timeBetweenText)
             {
