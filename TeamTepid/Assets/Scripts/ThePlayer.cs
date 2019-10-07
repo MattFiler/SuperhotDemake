@@ -37,6 +37,6 @@ public class ThePlayer : MonoBehaviour
         }
 
         //We always move forward
-        gameObject.transform.position += gameObject.transform.right / 8;
+        gameObject.transform.position += gameObject.transform.right / 6.5f;
     }
 }
