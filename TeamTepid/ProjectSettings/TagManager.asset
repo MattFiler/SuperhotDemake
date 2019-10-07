@@ -8,6 +8,8 @@ TagManager:
   - VisibilityChecker
   - DebugTag
   - Ai
+  - damaging
+  - walls
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - 
   - Main Camera Invisible
-  - 
+  - AIRaycastTargets
   - 
   - 
   - 
