@@ -307,7 +307,6 @@ GameObject:
   - component: {fileID: 4158993683738913959}
   - component: {fileID: 6387986273794757054}
   - component: {fileID: 7179751695770076763}
-  - component: {fileID: 1308395207821422769}
   - component: {fileID: 9040192515358046704}
   - component: {fileID: 5161382052343775437}
   - component: {fileID: 2135204924612057349}
@@ -372,27 +371,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwSpeed: 15
   adjacentProp: {fileID: 0}
---- !u!50 &1308395207821422769
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3837139728991584173}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &9040192515358046704
 BoxCollider2D:
   m_ObjectHideFlags: 0
