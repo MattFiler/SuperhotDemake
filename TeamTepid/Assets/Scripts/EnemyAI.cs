@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("The AI will path between these points in order.")]
     public Vector3[] waypoints;
     [Tooltip("If true the AI will start at waypoint index 0 after it visists all locations, otherwise the AI will just stop.")]
-    [SerializeField] bool loopPath = false;
+    [SerializeField] private EndOfPathBehaviour loopPath;
     [SerializeField] private float walkSpeed = 5;
     [SerializeField] private float runSpeed = 10;
     [Tooltip("The distance at which the AI will detect the player.")]
@@ -32,6 +32,15 @@ public class EnemyAI : MonoBehaviour
     private ContactFilter2D cf;
     [SerializeField] LayerMask raycastTargets;
 
+    private bool backTracking = false;
+
+    enum EndOfPathBehaviour
+    {
+        DONT_LOOP,
+        LOOP,
+        BACKTRACK
+    }
+
     private void Start()
     {
         //cf.layerMask = raycastTargets;
@@ -39,18 +48,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (didShoot)
-        {
-            ShotgunShot.SetActive(true);
-            timeSinceFired += Time.deltaTime;
-            if (timeSinceFired >= 0.5f)
-            {
-                ShotgunShot.SetActive(false);
-                didShoot = false;
-                timeSinceFired = 0.0f;
-            }
-        }
-
         if (inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
@@ -130,9 +127,10 @@ public class EnemyAI : MonoBehaviour
             {
                 transform.position += moveVector;
             }
-            else if (!didShoot)
+            else
             {
-                didShoot = true;
+                // Attack code
+                GetComponentInChildren<PropInteraction>().UseProp(moveVector);
             }
         }
         // Following waypoints code
@@ -150,10 +148,37 @@ public class EnemyAI : MonoBehaviour
             // If close to the waypoint, move onto the next one
             if (Vector3.Distance(waypoints[waypointIndex], transform.position) < 0.5f)
             {
-                waypointIndex++;
-                if (waypointIndex == waypoints.Length && loopPath)
+                if (backTracking)
                 {
-                    waypointIndex = 0;
+                    waypointIndex--;
+                    if (waypointIndex == -1)
+                    {
+                        waypointIndex = 0;
+                        backTracking = false;
+                    }
+                }
+                else
+                {
+                    waypointIndex++;
+                    if (waypointIndex == waypoints.Length)
+                    {
+                        switch(loopPath)
+                        {
+                            case EndOfPathBehaviour.LOOP:
+                                {
+                                    waypointIndex = 0;
+                                    break;
+                                }
+                            case EndOfPathBehaviour.BACKTRACK:
+                                {
+                                    backTracking = true;
+                                    waypointIndex = waypoints.Length - 1;
+                                    break;
+                                }
+                            default:
+                                break;
+                        }
+                    }
                 }
             }
         }
