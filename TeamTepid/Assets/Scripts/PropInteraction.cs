@@ -12,10 +12,11 @@ public class PropInteraction : MonoBehaviour
     [Tooltip("The amount of rotation per step")]
     public float rotationStep = 5;
     public Vector2 defaultUseDirection = Vector2.right;
-    public bool propThrown = false;
+    [HideInInspector] public bool propThrown = false;
 
     private AttackWithProp attack;
     private ShootWithProp shoot;
+    [HideInInspector] public string pickedupObjTag;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class PropInteraction : MonoBehaviour
         {
             transform.parent = pickUpTransform;
             transform.position = pickUpTransform.Find("PropPos").position;
+            pickedupObjTag = pickUpTransform.gameObject.tag;
 
             int index = 0;
 
@@ -58,6 +60,7 @@ public class PropInteraction : MonoBehaviour
     {
         if (!propThrown)
         {
+            pickedupObjTag = null;
             GetComponent<SpriteRenderer>().enabled = true;
             gameObject.AddComponent<Rigidbody2D>();
             GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,7 +51,7 @@ public class ShootWithProp : MonoBehaviour
         {
             StartCoroutine(FlashMuzzle(bulletSpawn));
         }
-
+        newBullet.GetComponent<BulletCollision>().ignoreCollisionTag = GetComponent<PropInteraction>().pickedupObjTag;
         newBullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
         newBullet.GetComponent<Rigidbody2D>().velocity = direction.normalized * bulletSpeed;
     }
