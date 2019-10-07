@@ -12,8 +12,6 @@ public class SwapSprites : MonoBehaviour
    public  void swapSprite(SpriteType spriteType)
    {
         currentSpriteType = spriteType;
-        Debug.Log((int)spriteType);
-        Debug.Log(sprites[(int)spriteType].name);
         GetComponent<SpriteRenderer>().sprite = sprites[(int)spriteType];
    }
 }
