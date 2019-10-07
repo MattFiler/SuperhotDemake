@@ -33,31 +33,37 @@ public class PropInteraction : MonoBehaviour
 
     public void PickUpProp(Transform pickUpTransform)
     {
-        transform.parent = pickUpTransform;
-        transform.position = pickUpTransform.Find("PropPos").position;
-
-        int index = 0;
-
-        if(attack != null)
+        if (!propThrown)
         {
-            index = (int)attack.weaponType;
-        }
-        else if(shoot != null)
-        {
-            index = (int)shoot.gunType;
-        }
+            transform.parent = pickUpTransform;
+            transform.position = pickUpTransform.Find("PropPos").position;
 
-        pickUpTransform.GetComponent<Animator>().SetInteger("Weapon Index", index);
-        GetComponent<SpriteRenderer>().enabled = false;
+            int index = 0;
+
+            if (attack != null)
+            {
+                index = (int)attack.weaponType;
+            }
+            else if (shoot != null)
+            {
+                index = (int)shoot.gunType;
+            }
+
+            pickUpTransform.GetComponent<Animator>().SetInteger("Weapon Index", index);
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     public void ThrowProp(Vector2 throwDirection, float throwSpeed)
     {
-        GetComponent<SpriteRenderer>().enabled = true;
-        gameObject.AddComponent<Rigidbody2D>();
-        GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
-        propThrown = true;
-        StartCoroutine(SpinProp());
+        if (!propThrown)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.AddComponent<Rigidbody2D>();
+            GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
+            propThrown = true;
+            StartCoroutine(SpinProp());
+        }
     }
 
     IEnumerator SpinProp()
