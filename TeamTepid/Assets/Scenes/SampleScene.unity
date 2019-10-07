@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad6a119f0195b14a9aad66e4fa2e151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnLoad: 0
   textString: Some Demo Flash Text
   timeBetweenText: 1
 --- !u!1 &2468430360407991793
@@ -643,7 +644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.7, y: 4.7}
+  m_AnchoredPosition: {x: -62.4, y: 4.1}
   m_SizeDelta: {x: 158.56, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2468430361518904302
@@ -667,11 +668,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b19de2eea8abda44aa1113fefd7eaf87, type: 3}
-    m_FontSize: 27
+    m_Font: {fileID: 12800000, guid: 16e6a4658ffb6c844b4ae14f09b8f7cc, type: 3}
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 8
     m_MaxSize: 98
     m_Alignment: 5
     m_AlignByGeometry: 0
@@ -679,7 +680,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'SUPER '
+  m_Text: SUPER
 --- !u!222 &2468430361518904303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -722,7 +723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 97.619995, y: 4.699997}
+  m_AnchoredPosition: {x: 92.92, y: 3.5000014}
   m_SizeDelta: {x: 152.08, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2468430361908515977
@@ -746,19 +747,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b19de2eea8abda44aa1113fefd7eaf87, type: 3}
-    m_FontSize: 27
+    m_Font: {fileID: 12800000, guid: f1e64a50c4a3d1d43b0315f9a8e4b81c, type: 3}
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 9
     m_MaxSize: 98
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 0
+    m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: HOT
+  m_Text: <b>HOT</b>
 --- !u!1 &2468430361908515979
 GameObject:
   m_ObjectHideFlags: 0

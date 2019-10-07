@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextTimer : MonoBehaviour
+public class TextTimer : MonoSingleton<TextTimer>
 {
     [SerializeField] private string textString = "";
     [SerializeField] private float timeBetweenText = 1.0f;

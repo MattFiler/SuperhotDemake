@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoCount: 20
-  gunType: 2
+  gunType: 5
   bulletSpeed: 20
   bulletPrefab: {fileID: 4742526602024042253, guid: eb7dff21bdd1a3a469fa469593668075,
     type: 3}

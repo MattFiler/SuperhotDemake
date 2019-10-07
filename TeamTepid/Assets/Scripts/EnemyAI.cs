@@ -28,6 +28,8 @@ public class EnemyAI : MonoBehaviour
     private bool shouldChase = false;
     private float aggroTimeElapsed = 0;
 
+    public bool isDead = false; //isDead is used to determine if the game should end (when all enemies are isDead)
+
     private void Update()
     {
         if (didShoot)
