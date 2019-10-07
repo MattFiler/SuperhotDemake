@@ -233,6 +233,10 @@ MonoBehaviour:
   DestroyOnLoad: 0
   LevelPrefabs:
   - {fileID: 8575525903383844725, guid: 8c0ad9ed1113e1b4f94a07ddabc0b342, type: 3}
+  - {fileID: 3357591769851337616, guid: d5b821b9db3f56e4a8aea2ffd96b41f0, type: 3}
+  - {fileID: 3213526068319599286, guid: 48d97ebdcbc1ef4499cf21b9650b4ddf, type: 3}
+  - {fileID: 4983783221268789802, guid: 1feee878864384749ba4d3c2d8aea3fe, type: 3}
+  - {fileID: 9173301423990878500, guid: bf65b40c5a45bf8479c0181a3b5af224, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29d13d6bec052942938e7d1a7d24481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnLoad: 0
 --- !u!1 &2384908466883936625
 GameObject:
   m_ObjectHideFlags: 0
