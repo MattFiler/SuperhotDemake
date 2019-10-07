@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2676844924770967939}
   m_Layer: 0
   m_Name: AI
-  m_TagString: Untagged
+  m_TagString: Ai
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,10 @@ MonoBehaviour:
   aggroDelay: 0.2
   CombatRange: 2.124578
   ShotgunShot: {fileID: 3977817753609931273}
+  isDead: 0
+  raycastTargets:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &2676844924770967940
 BoxCollider2D:
   m_ObjectHideFlags: 0
