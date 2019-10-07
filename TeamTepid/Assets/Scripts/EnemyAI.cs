@@ -54,10 +54,10 @@ public class EnemyAI : MonoBehaviour
         if (inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
-            shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
+            shouldChase = Vector3.Distance(transform.position, player.transform.position) > CombatRange;
         }
         RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
-        if (shouldChase && ray.collider.CompareTag(player.tag))
+        if (ray.collider && ray.collider.CompareTag(player.tag))
         {
             // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
             aggroTimeElapsed += Time.deltaTime;
@@ -77,6 +77,7 @@ public class EnemyAI : MonoBehaviour
     {
         inCombat = false;
         shouldChase = false;
+        aggroTimeElapsed = 0;
 
         float closestDist = 10000;
         int closestIndex = 0;
