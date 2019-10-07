@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnLoad: 0
-  textString: Some Demo Flash Text
+  textString: 
   timeBetweenText: 1
 --- !u!1 &2468430360407991793
 GameObject:
@@ -509,7 +509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2468430361279777114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6929749267421859163
 RectTransform:
   m_ObjectHideFlags: 0
