@@ -28,7 +28,7 @@ public class UseProp : MonoBehaviour
     {
         if (adjacentProp != null)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("NES BUTTON B"))
             {
                 if (!pickedUpProp)
                 {
@@ -46,14 +46,17 @@ public class UseProp : MonoBehaviour
 
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && HasProp())
+            else if (HasProp())
             {
-                Vector2 currentDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                adjacentProp.UseProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection);
-            }
-            else if (Input.GetKeyUp(KeyCode.Space) && HasProp())
-            {
-                adjacentProp.StopPropUse();
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
+                {
+                    Vector2 currentDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                    adjacentProp.UseProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection);
+                }
+                else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("NES BUTTON A"))
+                {
+                    adjacentProp.StopPropUse();
+                }
             }
         }
     }

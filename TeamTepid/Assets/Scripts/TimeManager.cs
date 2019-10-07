@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : MonoSingleton<TimeManager>
 {
     private float pauseGauge = 1.0f;
     private float realDeltaTimeCumulative = 0.0f;
@@ -42,6 +42,21 @@ public class TimeManager : MonoBehaviour
         {
             pauseGauge = 1.0f;
         }
+
+#if UNITY_EDITOR
+        //If in editor, allow keyboard controls (UNITY BUG!!)
+        if (horizontal == 0 && vertical == 0)
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                pauseGauge = 0.0f;
+            }
+            else
+            {
+                pauseGauge = 1.0f;
+            }
+        }
+#endif
 
         //Change game time to match pause gauge
         Time.timeScale = (pauseGauge - 1) * -1;
