@@ -18,6 +18,7 @@ public class ThePlayer : MonoBehaviour
         {
             Debug.Log("DEAD");
             gameObject.SetActive(false);
+            ScoreManager.Instance.ShowDefeatScreen();
             return;
         }
 
