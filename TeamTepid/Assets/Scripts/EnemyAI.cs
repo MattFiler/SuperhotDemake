@@ -44,21 +44,29 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (inCombat)
+        if (!player.GetComponent<ThePlayer>().isDead)
         {
-            // Stop/Start chasing depending on the distance to the player
-            shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
-        }
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
-        if (shouldChase && ray.collider.CompareTag(player.tag))
-        {
-            Debug.Log("Ray hit player");
-            // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
-            aggroTimeElapsed += Time.deltaTime;
-            if (aggroTimeElapsed >= aggroDelay)
+            if (inCombat)
             {
-                inCombat = true;
-                shouldChase = true;
+                // Stop/Start chasing depending on the distance to the player
+                shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
+            }
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
+            if (shouldChase && ray.collider.CompareTag(player.tag))
+            {
+                Debug.Log("Ray hit player");
+                // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
+                aggroTimeElapsed += Time.deltaTime;
+                if (aggroTimeElapsed >= aggroDelay)
+                {
+                    inCombat = true;
+                    shouldChase = true;
+                }
+            }
+            else
+            {
+                inCombat = false;
+                shouldChase = false;
             }
         }
         else
