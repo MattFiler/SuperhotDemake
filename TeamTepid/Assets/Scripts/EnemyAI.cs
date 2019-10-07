@@ -20,6 +20,7 @@ public class EnemyAI : MonoBehaviour
     public float CombatRange = 10;
 
     [SerializeField] private GameObject ShotgunShot;
+    [SerializeField] private LayerMask raycastTargets;
     private float timeSinceFired = 0.0f;
     private bool didShoot = false;
 
@@ -43,13 +44,15 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if(inCombat)
+        if (inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
-            shouldChase = Vector3.Distance(transform.position, player.transform.position) > CombatRange;
+            shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
         }
-        else if (Vector3.Distance(transform.position, player.transform.position) <= DetectionRadius)
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
+        if (shouldChase && ray.collider.CompareTag(player.tag))
         {
+            Debug.Log("Ray hit player");
             // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
             aggroTimeElapsed += Time.deltaTime;
             if (aggroTimeElapsed >= aggroDelay)
@@ -57,6 +60,11 @@ public class EnemyAI : MonoBehaviour
                 inCombat = true;
                 shouldChase = true;
             }
+        }
+        else
+        {
+            inCombat = false;
+            shouldChase = false;
         }
     }
 
@@ -100,6 +108,16 @@ public class EnemyAI : MonoBehaviour
                     waypointIndex = 0;
                 }
             }  
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("damaging"))
+        {
+            isDead = true;
+            //Insert death animation here
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
