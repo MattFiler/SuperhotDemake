@@ -12,7 +12,15 @@ public class UseProp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //FOR REFERENCE
+        if (Input.GetButton("NES BUTTON B"))
+        {
+            Debug.Log("NES BUTTON B");
+        }
+        if (Input.GetButton("NES BUTTON A"))
+        {
+            Debug.Log("NES BUTTON A");
+        }
     }
 
     // Update is called once per frame

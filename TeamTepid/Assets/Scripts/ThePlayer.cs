@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class ThePlayer : MonoBehaviour
 {
+    [HideInInspector] public bool isDead = false;
+
     /* Handle player input & move appropriately */
     void FixedUpdate()
     {
-        //FOR REFERENCE
-        if (Input.GetButton("NES BUTTON B"))
+        //Destroy on death
+        if (isDead)
         {
-            Debug.Log("NES BUTTON B");
-        }
-        if (Input.GetButton("NES BUTTON A"))
-        {
-            Debug.Log("NES BUTTON A");
+            Debug.Log("DEAD");
+            gameObject.SetActive(false);
+            return;
         }
 
         //Turn the player to the correct direction
