@@ -51,7 +51,8 @@ public class PropInteraction : MonoBehaviour
                 index = (int)shoot.gunType;
             }
 
-            pickUpTransform.GetComponent<Animator>().SetInteger("Weapon Index", index);
+            pickUpTransform.GetComponent<SwapSprites>().swapSprite((SwapSprites.SpriteType)index);
+
             GetComponent<SpriteRenderer>().enabled = false;
         }
     }
