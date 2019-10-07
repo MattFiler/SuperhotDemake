@@ -7,6 +7,9 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 {
     [SerializeField] private GameObject inGameScoreUI;
     [SerializeField] private GameObject endGameScoreUI;
+
+    [SerializeField] private AudioSource victorySFX;
+    [SerializeField] private AudioSource defeatSFX;
     private float totalScore = 0;
 
     [HideInInspector] public List<float> LevelTargetTime = new List<float>();
@@ -50,11 +53,22 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     }
 
     /* Show the time score UI */
-    public void ShowGameOverScreen()
+    public void ShowVictoryScreen()
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore;
+        victorySFX.Play();
+    }
+
+    /* Show the defeat screen */
+    public void ShowDefeatScreen()
+    {
+        inGameScoreUI.SetActive(false);
+        endGameScoreUI.SetActive(true);
+
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore;
+        defeatSFX.Play();
     }
 }

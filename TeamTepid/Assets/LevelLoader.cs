@@ -42,7 +42,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         //Game is over
         if (CurrentLevelIndex == LevelPrefabs.Count - 1)
         {
-            ScoreManager.Instance.ShowGameOverScreen();
+            ScoreManager.Instance.ShowVictoryScreen();
             Destroy(CurrentLevel);
             CurrentLevel = null;
             return;
