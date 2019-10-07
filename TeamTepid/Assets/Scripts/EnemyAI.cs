@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        cf.layerMask = raycastTargets;
+        //cf.layerMask = raycastTargets;
     }
 
     private void Update()
@@ -64,7 +64,6 @@ public class EnemyAI : MonoBehaviour
             if (aggroTimeElapsed >= aggroDelay)
             {
                 inCombat = true;
-                shouldChase = true;
             }
         }
         else if (inCombat)
@@ -86,22 +85,26 @@ public class EnemyAI : MonoBehaviour
         {
             List<RaycastHit2D> rays = new List<RaycastHit2D>();
             // Get all raycast targets between this and the waypoint
-            Physics2D.Raycast(transform.position, waypoints[i] - transform.position, cf, rays);
+            float dist = Vector2.Distance(transform.position, waypoints[i]);
+            Physics2D.Raycast(transform.position, waypoints[i] - transform.position,cf, rays, dist);
             bool wallsFound = false;
             foreach (RaycastHit2D ray in rays)
             {
                 // If any of the rays are not a player, they are walls
-                if (!ray.collider.CompareTag(player.tag))
+                if (ray.collider.CompareTag("walls"))
                 {
                     wallsFound = true;
                 }
             }
-            if (!wallsFound)
-                clearPathFound = true;
-
-            if ((wallsFound && !clearPathFound) || !wallsFound)
+            Debug.Log(wallsFound);
+            if (!wallsFound && !clearPathFound)
             {
-                float dist = Vector2.Distance(transform.position, waypoints[i]);
+                clearPathFound = true;
+                closestDist = dist;
+                closestIndex = i;
+            }
+            else if ((wallsFound && !clearPathFound) || !wallsFound)
+            {
                 if (dist < closestDist)
                 {
                     closestDist = dist;
@@ -118,14 +121,14 @@ public class EnemyAI : MonoBehaviour
         // Chase/Fighting Code
         if (inCombat)
         {
+            Vector3 moveVector = player.transform.position - transform.position;
+            moveVector.Normalize();
+            moveVector *= runSpeed / 50;
+            var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             if (shouldChase)
             {
-                Vector3 moveVector = player.transform.position - transform.position;
-                moveVector.Normalize();
-                moveVector *= runSpeed / 50;
                 transform.position += moveVector;
-                var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
             else if (!didShoot)
             {
