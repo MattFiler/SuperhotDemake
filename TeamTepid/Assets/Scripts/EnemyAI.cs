@@ -121,14 +121,14 @@ public class EnemyAI : MonoBehaviour
         // Chase/Fighting Code
         if (inCombat)
         {
+            Vector3 moveVector = player.transform.position - transform.position;
+            moveVector.Normalize();
+            moveVector *= runSpeed / 50;
+            var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             if (shouldChase)
             {
-                Vector3 moveVector = player.transform.position - transform.position;
-                moveVector.Normalize();
-                moveVector *= runSpeed / 50;
                 transform.position += moveVector;
-                var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
             else if (!didShoot)
             {
