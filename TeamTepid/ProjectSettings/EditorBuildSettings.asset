@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 40ed13206fc2f2044800b88f17397f74
+  - enabled: 1
+    path: Assets/Scenes/OcclusionScenes/Level1.unity
+    guid: b5a94e21b4086b44ca689ad784711d16
+  - enabled: 1
+    path: Assets/Scenes/OcclusionScenes/Level2.unity
+    guid: 552e4e29d0142d543b55a2f357d42322
+  - enabled: 1
+    path: Assets/Scenes/OcclusionScenes/Level3.unity
+    guid: 1056b28466003544eb0623da69ae2c74
+  - enabled: 1
+    path: Assets/Scenes/OcclusionScenes/Level4.unity
+    guid: 20e405936ae209c4ab0497b81f7b2921
+  - enabled: 1
+    path: Assets/Scenes/OcclusionScenes/Level5.unity
+    guid: a6670301d378c0440a2c0ff24cccbd49
   m_configObjects: {}

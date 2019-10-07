@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoSingleton<LevelLoader>
 {
@@ -44,6 +45,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
     public void LoadNewLevel(int index)
     {
         Destroy(CurrentLevel);
+        SceneManager.LoadScene(index+1);
         CurrentLevel = Instantiate(LevelPrefabs[index], new Vector3(0,0,0), Quaternion.identity) as GameObject;
         CurrentLevelIndex = index;
 

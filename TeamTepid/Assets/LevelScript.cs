@@ -9,6 +9,8 @@ public class LevelScript : MonoBehaviour
     /* On init of level, work out how many enemies we have, so we can monitor them for isDead state */
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         GameObject enemyParent = gameObject.transform.GetChild(0).gameObject.transform.Find("Enemies").gameObject;
         for (int i = 0; i < enemyParent.transform.childCount; i++)
         {

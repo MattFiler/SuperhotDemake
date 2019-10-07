@@ -354,7 +354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'GAME OVER
+  m_Text: 'YOU WON
 
 
     SCORE: 100'
@@ -414,10 +414,14 @@ MonoBehaviour:
   - {fileID: 8575525903383844725, guid: 8cf1425071ad55f42aa9c18c55b46423, type: 3}
   - {fileID: 8575525903383844725, guid: a6ca4ee178c96064aa95d104532b25d2, type: 3}
   - {fileID: 8575525903383844725, guid: 8fcfc6822ffd6bd4a94504bce820fad8, type: 3}
+  - {fileID: 8575525903383844725, guid: 1c0a33ea9ffd91545abd70ae76adc0b8, type: 3}
+  - {fileID: 1337891001695715031, guid: 8c0ad9ed1113e1b4f94a07ddabc0b342, type: 3}
   LevelNames:
   - SUPER HOT
   - KEEP GOING
   - ALMOST THERE
+  - WRONG TIME
+  - UNFINISHED BUSINESS
   LevelTimesToAimFor:
   - 7
   - 10
@@ -592,13 +596,14 @@ GameObject:
   - component: {fileID: 909298812}
   - component: {fileID: 909298811}
   - component: {fileID: 909298810}
+  - component: {fileID: 909298814}
   m_Layer: 5
   m_Name: ScoreCanvasEndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &909298810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +685,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &909298814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909298809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3955f8cf50a649847a8ea94067823f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1050639871
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +709,7 @@ GameObject:
   - component: {fileID: 1050639874}
   - component: {fileID: 1050639873}
   - component: {fileID: 1050639872}
+  - component: {fileID: 1050639876}
   m_Layer: 5
   m_Name: ScoreCanvasInGame
   m_TagString: Untagged
@@ -780,6 +798,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1050639876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050639871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3955f8cf50a649847a8ea94067823f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787114384
 GameObject:
   m_ObjectHideFlags: 0

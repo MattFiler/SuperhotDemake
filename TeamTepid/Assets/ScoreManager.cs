@@ -55,6 +55,6 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "GAME OVER\n\nSCORE: " + (int)totalScore;
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore;
     }
 }
