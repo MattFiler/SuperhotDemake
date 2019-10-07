@@ -116,14 +116,14 @@ public class PropInteraction : MonoBehaviour
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(attack.attackCooldown);
             attack.canAttack = true;
-            Debug.Log("Can Attack");
+            //Debug.Log("Can Attack");
         }
         else if(propType == PropType.RANGED)
         {
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(shoot.shootCooldown);
             shoot.canShoot = true;
-            Debug.Log("Can Attack");
+            //Debug.Log("Can Attack");
         }
 
         

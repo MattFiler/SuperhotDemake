@@ -28,7 +28,8 @@ public class EnemyAI : MonoBehaviour
     private bool shouldChase = false;
     private float aggroTimeElapsed = 0;
 
-    public bool isDead = false; //isDead is used to determine if the game should end (when all enemies are isDead)
+    public bool isDead = false;
+    public bool didDebugDeath = false;
     private ContactFilter2D cf;
     [SerializeField] LayerMask raycastTargets;
 
@@ -67,6 +68,14 @@ public class EnemyAI : MonoBehaviour
         {
             DropCombat();
         }
+
+#if UNITY_EDITOR
+        if (isDead && !didDebugDeath)
+        {
+            Debug.Log("ENEMY AI IS DEAD");
+            didDebugDeath = true;
+        }
+#endif
     }
 
     private void DropCombat()
@@ -93,7 +102,7 @@ public class EnemyAI : MonoBehaviour
                     wallsFound = true;
                 }
             }
-            Debug.Log(wallsFound);
+            //Debug.Log(wallsFound);
             if (!wallsFound && !clearPathFound)
             {
                 clearPathFound = true;

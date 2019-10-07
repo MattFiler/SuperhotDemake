@@ -16,7 +16,7 @@ public class ThePlayer : MonoBehaviour
         //Destroy on death
         if (isDead)
         {
-            Debug.Log("DEAD");
+            Debug.Log("PLAYER IS DEAD");
             gameObject.SetActive(false);
             ScoreManager.Instance.ShowDefeatScreen();
             return;
