@@ -3269,7 +3269,7 @@ PrefabInstance:
     - target: {fileID: 500887719460386501, guid: e92fcb772fd375d428ad95836f117a88,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.94
+      value: -10.96
       objectReference: {fileID: 0}
     - target: {fileID: 500887719460386501, guid: e92fcb772fd375d428ad95836f117a88,
         type: 3}
@@ -3320,6 +3320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Assault rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 500887719460386497, guid: e92fcb772fd375d428ad95836f117a88,
+        type: 3}
+      propertyPath: gunType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 500887719460386497, guid: e92fcb772fd375d428ad95836f117a88,
+        type: 3}
+      propertyPath: autoShotCooldown
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92fcb772fd375d428ad95836f117a88, type: 3}
