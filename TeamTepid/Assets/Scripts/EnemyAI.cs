@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     [Tooltip("The AI will path between these points in order.")]
     public Vector3[] waypoints;
     [Tooltip("If true the AI will start at waypoint index 0 after it visists all locations, otherwise the AI will just stop.")]
-    [SerializeField] bool loopPath = false; 
+    [SerializeField] bool loopPath = false;
     [SerializeField] private float walkSpeed = 5;
     [SerializeField] private float runSpeed = 10;
     [Tooltip("The distance at which the AI will detect the player.")]
@@ -20,7 +20,6 @@ public class EnemyAI : MonoBehaviour
     public float CombatRange = 10;
 
     [SerializeField] private GameObject ShotgunShot;
-    [SerializeField] private LayerMask raycastTargets;
     private float timeSinceFired = 0.0f;
     private bool didShoot = false;
 
@@ -30,6 +29,13 @@ public class EnemyAI : MonoBehaviour
     private float aggroTimeElapsed = 0;
 
     public bool isDead = false; //isDead is used to determine if the game should end (when all enemies are isDead)
+    private ContactFilter2D cf;
+    [SerializeField] LayerMask raycastTargets;
+
+    private void Start()
+    {
+        cf.layerMask = raycastTargets;
+    }
 
     private void Update()
     {
@@ -37,49 +43,79 @@ public class EnemyAI : MonoBehaviour
         {
             ShotgunShot.SetActive(true);
             timeSinceFired += Time.deltaTime;
-            if (timeSinceFired >= 0.5f) {
+            if (timeSinceFired >= 0.5f)
+            {
                 ShotgunShot.SetActive(false);
                 didShoot = false;
                 timeSinceFired = 0.0f;
             }
         }
 
-        if (!player.GetComponent<ThePlayer>().isDead)
+        if (inCombat)
         {
-            if (inCombat)
+            // Stop/Start chasing depending on the distance to the player
+            shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
+        }
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
+        if (shouldChase && ray.collider.CompareTag(player.tag))
+        {
+            // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
+            aggroTimeElapsed += Time.deltaTime;
+            if (aggroTimeElapsed >= aggroDelay)
             {
-                // Stop/Start chasing depending on the distance to the player
-                shouldChase = Vector3.Distance(transform.position, player.transform.position) <= CombatRange;
+                inCombat = true;
+                shouldChase = true;
             }
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
-            if (shouldChase && ray.collider.CompareTag(player.tag))
+        }
+        else if (inCombat)
+        {
+            DropCombat();
+        }
+    }
+
+    private void DropCombat()
+    {
+        inCombat = false;
+        shouldChase = false;
+
+        float closestDist = 10000;
+        int closestIndex = 0;
+        bool clearPathFound = false;
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            List<RaycastHit2D> rays = new List<RaycastHit2D>();
+            // Get all raycast targets between this and the waypoint
+            Physics2D.Raycast(transform.position, waypoints[i] - transform.position, cf, rays);
+            bool wallsFound = false;
+            foreach (RaycastHit2D ray in rays)
             {
-                Debug.Log("Ray hit player");
-                // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
-                aggroTimeElapsed += Time.deltaTime;
-                if (aggroTimeElapsed >= aggroDelay)
+                // If any of the rays are not a player, they are walls
+                if (!ray.collider.CompareTag(player.tag))
                 {
-                    inCombat = true;
-                    shouldChase = true;
+                    wallsFound = true;
                 }
             }
-            else
+            if (!wallsFound)
+                clearPathFound = true;
+
+            if ((wallsFound && !clearPathFound) || !wallsFound)
             {
-                inCombat = false;
-                shouldChase = false;
+                float dist = Vector2.Distance(transform.position, waypoints[i]);
+                if (dist < closestDist)
+                {
+                    closestDist = dist;
+                    closestIndex = i;
+                }
             }
         }
-        else
-        {
-            inCombat = false;
-            shouldChase = false;
-        }
+
+        waypointIndex = closestIndex;
     }
 
     private void FixedUpdate()
     {
         // Chase/Fighting Code
-        if(inCombat)
+        if (inCombat)
         {
             if (shouldChase)
             {
@@ -96,7 +132,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
         // Following waypoints code
-        else if(waypoints.Length > 0 && waypointIndex < waypoints.Length)
+        else if (waypoints.Length > 0 && waypointIndex < waypoints.Length)
         {
             // Move the player towards the next waypoint
             Vector3 moveVector = waypoints[waypointIndex] - transform.position;
@@ -111,21 +147,11 @@ public class EnemyAI : MonoBehaviour
             if (Vector3.Distance(waypoints[waypointIndex], transform.position) < 0.5f)
             {
                 waypointIndex++;
-                if(waypointIndex == waypoints.Length && loopPath)
+                if (waypointIndex == waypoints.Length && loopPath)
                 {
                     waypointIndex = 0;
                 }
-            }  
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("damaging"))
-        {
-            isDead = true;
-            //Insert death animation here
-            GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 }
