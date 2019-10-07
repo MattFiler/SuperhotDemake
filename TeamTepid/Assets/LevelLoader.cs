@@ -19,6 +19,17 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         LoadNewLevel(0);
     }
 
+#if UNITY_EDITOR
+    /* Debug: skip to next level */
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            LoadNextLevel();
+        }
+    }
+#endif
+
     /* Get the number of levels */
     public int GetLevelCount()
     {
