@@ -26,7 +26,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         //Game is over
         if (CurrentLevelIndex == LevelPrefabs.Count - 1)
         {
-            TextTimer.Instance.SetTextAndPlay("GAME OVER", 3);
+            ScoreManager.Instance.ShowGameOverScreen();
             Destroy(CurrentLevel);
             CurrentLevel = null;
             return;
@@ -42,6 +42,9 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         Destroy(CurrentLevel);
         CurrentLevel = Instantiate(LevelPrefabs[index], new Vector3(0,0,0), Quaternion.identity) as GameObject;
         CurrentLevelIndex = index;
+
+        ScoreManager.Instance.ClearTimeScore();
+
         TextTimer.Instance.SetTextAndPlay("LEVEL " + (index + 1), 2);
     }
 
