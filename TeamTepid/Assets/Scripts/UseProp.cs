@@ -38,7 +38,7 @@ public class UseProp : MonoBehaviour
                     adjacentProp.PickUpProp(transform);
                     pickedUpProp = true;
                 }
-                else
+                else if(adjacentProp.canUse)
                 {
                     adjacentProp.UseProp();
                 }

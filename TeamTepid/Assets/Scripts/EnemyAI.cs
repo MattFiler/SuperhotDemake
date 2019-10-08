@@ -64,6 +64,7 @@ public class EnemyAI : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, player.transform.position - transform.position, DetectionRadius, raycastTargets, 0);
         if (ray.collider && ray.collider.CompareTag(player.tag))
         {
+            Debug.Log(ray.collider.GetType());
             // Wait for a number of seconds equal to the aggroDelay before setting the AI to in combat
             aggroTimeElapsed += Time.deltaTime;
             if (aggroTimeElapsed >= aggroDelay)
