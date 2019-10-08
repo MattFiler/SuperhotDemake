@@ -15,6 +15,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
     /* On start of game, load level 0 */
     private void Start()
     {
+        Screen.SetResolution(160, 192, true, 60);
         ScoreManager.Instance.ShowIntroScreen();
         ScoreManager.Instance.LevelTargetTime = LevelTimesToAimFor;
     }
@@ -62,7 +63,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
         CurrentLevelIndex = index;
 
         ScoreManager.Instance.ClearTimeScore();
-        TextTimer.Instance.SetTextAndPlay(LevelNames[index], 2);
+        TextTimer.Instance.SetTextAndPlay(LevelNames[index], 1);
     }
 
     /* Return the current level as a GameObject */

@@ -32,13 +32,19 @@ public class TextTimer : MonoSingleton<TextTimer>
     }
 
     /* If playing, handle logic */
+    private float realDeltaTimeCumulative = 0.0f;
     void Update()
     {
+        realDeltaTimeCumulative += Time.unscaledDeltaTime;
         if (shouldTrigger && currentTextTimer <= textToRender.Count * timeBetweenText)
         {
             textUI.text = textToRender[currentTextIndex];
             textUI.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-            childObject.transform.localScale += new Vector3(0.002f, 0.002f, 0.002f);
+            if (realDeltaTimeCumulative >= Time.fixedDeltaTime && childObject.transform.localScale.x < 1.0f)
+            {
+                childObject.transform.localScale += new Vector3(0.002f, 0.002f, 0.002f);
+                realDeltaTimeCumulative = 0.0f;
+            }
 
             if (currentIntervalTimer >= timeBetweenText)
             {
@@ -49,7 +55,7 @@ public class TextTimer : MonoSingleton<TextTimer>
                     shouldTrigger = false;
                 }
                 gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
-                childObject.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                childObject.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             }
             else if (currentIntervalTimer + Time.unscaledDeltaTime >= timeBetweenText)
             {
@@ -99,6 +105,7 @@ public class TextTimer : MonoSingleton<TextTimer>
         currentTextTimer = 0.0f;
         currentIntervalTimer = 0.0f;
         shouldTrigger = true;
+        childObject.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
 
         gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
     }
