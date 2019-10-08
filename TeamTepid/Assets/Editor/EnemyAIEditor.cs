@@ -15,7 +15,7 @@ public class EnemyAIEditor : Editor
         Handles.color = Color.red;
         float combatRange = Handles.RadiusHandle(Quaternion.identity, t.transform.position, t.CombatRange);
         Handles.color = Color.blue;
-        Vector3[] waypoints = new Vector3[t.waypoints.Length];
+        Vector3[] waypoints = new Vector3[t.waypoints.Length+1];
         for (int i = 0; i < t.waypoints.Length; i++)
         {
             waypoints[i] = Handles.FreeMoveHandle(t.waypoints[i], Quaternion.identity, 0.1f, Vector3.one, Handles.CircleHandleCap);
@@ -24,6 +24,7 @@ public class EnemyAIEditor : Editor
                 Handles.DrawLine(waypoints[i], waypoints[i - 1]);
             }
         }
+        Handles.DrawLine(t.gameObject.transform.position, waypoints[0]);
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(target, "Changed AI Settings");
