@@ -109,20 +109,24 @@ public class PropInteraction : MonoBehaviour
 
     public void UseProp()
     {
-        if (attack != null)
+        if (useDirection != Vector2.zero)
         {
-            if (attack.canAttack)
+            if (attack != null)
             {
-                attack.startAttack();
-                attack.canAttack = false;
+                if (attack.canAttack)
+                {
+                    attack.startAttack();
+                    attack.canAttack = false;
+                    StartCoroutine(Cooldown());
+                }
+            }
+            else if (shoot != null)
+            {
+                shoot.setShootDirection(useDirection);
+                shoot.startShoot();
+                shoot.canShoot = false;
                 StartCoroutine(Cooldown());
             }
-        }
-        else if (shoot != null)
-        {
-            shoot.startShoot();
-            shoot.canShoot = false;
-            StartCoroutine(Cooldown());
         }
     }
 

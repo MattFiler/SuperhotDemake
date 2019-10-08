@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShootWithProp : MonoBehaviour
 {
-    public int ammoCount = 0;
     
     public enum GunType { PISTOL = 3, SHOTGUN = 4, ASSAULT_RIFLE = 5}
     public GunType gunType;
@@ -29,19 +28,17 @@ public class ShootWithProp : MonoBehaviour
     public void startShoot()
     {
         //Debug.Log(shootDirection);
-        if (canShoot && ammoCount > 0)
+        if (canShoot  /*&& shootDirection != Vector2.zero*/)
         {
             switch (gunType)
             {
                 case GunType.PISTOL:
-                    createBullet(GetDirection());
-                    --ammoCount;
+                    createBullet(shootDirection);
                     break;
                 case GunType.SHOTGUN:
-                    createBullet(GetDirection() + Vector2.Perpendicular(shootDirection), 1);
-                    createBullet(GetDirection(), 2);
-                    createBullet(GetDirection() - Vector2.Perpendicular(shootDirection),3);
-                    --ammoCount;
+                    createBullet(shootDirection + Vector2.Perpendicular(shootDirection), 1);
+                    createBullet(shootDirection, 2);
+                    createBullet(shootDirection - Vector2.Perpendicular(shootDirection),3);
                     break;
                 case GunType.ASSAULT_RIFLE:
                     StartCoroutine(autoFire());
@@ -76,8 +73,7 @@ public class ShootWithProp : MonoBehaviour
         while (!stopShooting)
         {
             Debug.Log("PEW");
-            createBullet(GetDirection());
-            --ammoCount;
+            createBullet(shootDirection);
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(autoShotCooldown);        
         }
@@ -94,8 +90,4 @@ public class ShootWithProp : MonoBehaviour
 
     }
 
-    private Vector2 GetDirection()
-    {
-        return shootDirection == Vector2.zero ? shootDirectionDefault : shootDirection;
-    }
 }
