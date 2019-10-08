@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lengthKeepVisible: 1
+  activateSeenForever: 1
 --- !u!114 &3899478076223168072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lengthKeepVisible: 1
+  activateSeenForever: 1
 --- !u!1001 &6345907850369328103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: waypoints.Array.data[2].z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 447344842836311536, guid: 84c8b986ec2c224429dc0ded95548391,
+        type: 3}
+      propertyPath: aggroDelay
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 447344842836311551, guid: 84c8b986ec2c224429dc0ded95548391,
         type: 3}
