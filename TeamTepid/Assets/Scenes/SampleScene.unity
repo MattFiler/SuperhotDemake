@@ -415,19 +415,16 @@ MonoBehaviour:
   - {fileID: 8575525903383844725, guid: a6ca4ee178c96064aa95d104532b25d2, type: 3}
   - {fileID: 8575525903383844725, guid: 8fcfc6822ffd6bd4a94504bce820fad8, type: 3}
   - {fileID: 8575525903383844725, guid: 1c0a33ea9ffd91545abd70ae76adc0b8, type: 3}
-  - {fileID: 1337891001695715031, guid: 8c0ad9ed1113e1b4f94a07ddabc0b342, type: 3}
   LevelNames:
   - SUPER HOT
   - KEEP GOING
   - ALMOST THERE
-  - WRONG TIME
-  - UNFINISHED BUSINESS
+  - FINAL SHOWDOWN
   LevelTimesToAimFor:
   - 7
   - 10
   - 10
-  - 10
-  - 10
+  - 15
 --- !u!1 &361147095
 GameObject:
   m_ObjectHideFlags: 0
