@@ -897,6 +897,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI
       objectReference: {fileID: 0}
+    - target: {fileID: 2676844924770967941, guid: 84c8b986ec2c224429dc0ded95548391,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9104782022402669220, guid: 84c8b986ec2c224429dc0ded95548391,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,12 +1020,17 @@ PrefabInstance:
     - target: {fileID: 447344842836311536, guid: 84c8b986ec2c224429dc0ded95548391,
         type: 3}
       propertyPath: DetectionRadius
-      value: 7.0770435
+      value: 8.820465
       objectReference: {fileID: 0}
     - target: {fileID: 447344842836311536, guid: 84c8b986ec2c224429dc0ded95548391,
         type: 3}
       propertyPath: loopPath
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 447344842836311536, guid: 84c8b986ec2c224429dc0ded95548391,
+        type: 3}
+      propertyPath: CombatRange
+      value: 8.303362
       objectReference: {fileID: 0}
     - target: {fileID: 2676844924770967939, guid: 84c8b986ec2c224429dc0ded95548391,
         type: 3}
