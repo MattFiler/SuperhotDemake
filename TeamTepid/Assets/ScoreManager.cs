@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -145,7 +146,13 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
+        bool wasHighscore = LogNewScore();
+        string endgameText = "YOU WON!\n\n";
+        string endgameTextEnd = "YOUR SCORE: " + (int)totalScore + "\n\nPRESS B";
+        if (wasHighscore) endgameText += "NEW HIGHSCORE!\n" + endgameTextEnd;
+        if (!wasHighscore) endgameText += "HIGHSCORE: " + HighestScore().ToString() + "\n" + endgameTextEnd;
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = endgameText;
+        
         victorySFX.Play();
         victoryStingSFX.Play();
         mainMusicSFX.Stop();
@@ -159,9 +166,39 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
+        bool wasHighscore = LogNewScore();
+        string endgameText = "DEFEAT\n\n";
+        string endgameTextEnd = "YOUR SCORE: " + (int)totalScore + "\n\nPRESS B";
+        if (wasHighscore) endgameText += "NEW HIGHSCORE!\n" + endgameTextEnd;
+        if (!wasHighscore) endgameText += "HIGHSCORE: " + HighestScore().ToString() + "\n" + endgameTextEnd;
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = endgameText;
+
         defeatSFX.Play();
         defeatStingSFX.Play();
         mainMusicSFX.Stop();
+    }
+
+    /* Log new score */
+    public bool LogNewScore()
+    {
+        PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + ((int)totalScore).ToString());
+        return (HighestScore() == (int)totalScore);
+    }
+
+    /* Get the highest score logged */
+    public int HighestScore()
+    {
+        List<string> allScores = new List<string>(PlayerPrefs.GetString("highscores").Split(','));
+        int highestScore = 0;
+        foreach (string score in allScores)
+        {
+            if (score == "") continue;
+            int thisScore = Convert.ToInt32(score);
+            if (thisScore > highestScore)
+            {
+                highestScore = thisScore;
+            }
+        }
+        return highestScore;
     }
 }

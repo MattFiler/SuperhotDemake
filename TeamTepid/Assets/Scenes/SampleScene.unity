@@ -343,7 +343,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 27064b3b954f2fb4495b0e0dc8b07d61, type: 3}
-    m_FontSize: 158
+    m_FontSize: 126
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 12
@@ -357,7 +357,9 @@ MonoBehaviour:
   m_Text: 'YOU WON
 
 
-    SCORE: 100'
+    HIGHSCORE: 500
+
+    YOUR SCORE: 100'
 --- !u!222 &233731771
 CanvasRenderer:
   m_ObjectHideFlags: 0
