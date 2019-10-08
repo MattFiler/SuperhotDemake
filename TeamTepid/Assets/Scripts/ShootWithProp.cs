@@ -17,6 +17,7 @@ public class ShootWithProp : MonoBehaviour
     public float autoShotCooldown = 0;
 
     private Vector2 shootDirection = Vector2.up;
+    public Vector2 shootDirectionDefault = Vector2.right;
 
     // Start is called before the first frame update
 
@@ -33,13 +34,13 @@ public class ShootWithProp : MonoBehaviour
             switch (gunType)
             {
                 case GunType.PISTOL:
-                    createBullet(shootDirection);
+                    createBullet(GetDirection());
                     --ammoCount;
                     break;
                 case GunType.SHOTGUN:
-                    createBullet(shootDirection + Vector2.Perpendicular(shootDirection), 1);
-                    createBullet(shootDirection, 2);
-                    createBullet(shootDirection - Vector2.Perpendicular(shootDirection),3);
+                    createBullet(GetDirection() + Vector2.Perpendicular(shootDirection), 1);
+                    createBullet(GetDirection(), 2);
+                    createBullet(GetDirection() - Vector2.Perpendicular(shootDirection),3);
                     --ammoCount;
                     break;
                 case GunType.ASSAULT_RIFLE:
@@ -75,7 +76,7 @@ public class ShootWithProp : MonoBehaviour
         while (!stopShooting)
         {
             Debug.Log("PEW");
-            createBullet(shootDirection);
+            createBullet(GetDirection());
             --ammoCount;
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(autoShotCooldown);        
@@ -91,5 +92,10 @@ public class ShootWithProp : MonoBehaviour
         yield return new WaitForSeconds(muzzleFlashTime);
         bulletSpawn.GetComponent<SpriteRenderer>().enabled = false;
 
+    }
+
+    private Vector2 GetDirection()
+    {
+        return shootDirection == Vector2.zero ? shootDirectionDefault : shootDirection;
     }
 }

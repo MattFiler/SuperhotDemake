@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-    [HideInInspector] public string ignoreCollisionTag;
+    [HideInInspector] public string ignoreCollisionTag = "";
 
     /* When a bullet hits something, do stuff */
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if(collider.GetType() == typeof(CircleCollider2D))
+        {
+            return;
+        }
         //Kill if we hit a player or AI
         if (collider.CompareTag(ignoreCollisionTag) || collider.CompareTag("Bullet") || collider.CompareTag("Prop"))
         {
