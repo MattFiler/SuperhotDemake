@@ -89,7 +89,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         endGameScoreUI.SetActive(true);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";
         victorySFX.Play();
         victoryStingSFX.Play();
         mainMusicSFX.Stop();
@@ -102,7 +102,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         endGameScoreUI.SetActive(true);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";
         defeatSFX.Play();
         defeatStingSFX.Play();
         mainMusicSFX.Stop();
