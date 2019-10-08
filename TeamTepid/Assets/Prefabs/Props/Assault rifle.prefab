@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f796fe87ee546b34a990bcd9bd8cecc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: 20
   gunType: 5
   bulletSpeed: 20
   bulletPrefab: {fileID: 4742526602024042253, guid: eb7dff21bdd1a3a469fa469593668075,
@@ -231,6 +230,7 @@ MonoBehaviour:
   canShoot: 1
   muzzleFlashTime: 0.05
   autoShotCooldown: 0.1
+  shootDirectionDefault: {x: 1, y: 0}
 --- !u!114 &6550460166301186319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,9 +238,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6692124287208778348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lengthKeepVisible: 1
+  activateSeenForever: 1

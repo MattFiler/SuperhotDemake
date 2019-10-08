@@ -200,7 +200,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletPrefab: {fileID: 4742526602024042253, guid: eb7dff21bdd1a3a469fa469593668075,
     type: 3}
-  shootCooldown: 0.1
+  shootCooldown: 0.7
   canShoot: 1
   muzzleFlashTime: 0.05
   autoShotCooldown: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95346853407177360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
   m_Name: 
