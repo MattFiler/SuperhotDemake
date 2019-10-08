@@ -23,32 +23,37 @@ public class ThePlayer : MonoBehaviour
         }
 
         //Turn the player to the correct direction
+        bool shouldMove = false;
         if (Input.GetAxis("Vertical") > 0)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
             currentDirection = Direction.UP;
+            shouldMove = true;
         }
         if (Input.GetAxis("Horizontal") > 0)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             currentDirection = Direction.RIGHT;
-
+            shouldMove = true;
         }
         if (Input.GetAxis("Horizontal") < 0)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
             currentDirection = Direction.LEFT;
-
+            shouldMove = true;
         }
         if (Input.GetAxis("Vertical") < 0)
         {
             gameObject.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
             currentDirection = Direction.DOWN;
-
+            shouldMove = true;
         }
 
         //We always move forward
-        gameObject.transform.position += gameObject.transform.right / 6.5f;
+        if (shouldMove)
+        {
+            gameObject.transform.position += gameObject.transform.right / 6.5f;
+        }
     }
 
     public Vector2 getCurrentDirection()
