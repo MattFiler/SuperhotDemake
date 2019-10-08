@@ -11,7 +11,7 @@ public class PropInteraction : MonoBehaviour
     public float rotationDelay = 0.5f;
     [Tooltip("The amount of rotation per step")]
     public float rotationStep = 5;
-    [HideInInspector] public Vector2 useDirection = Vector2.zero;
+    public Vector2 defaultUseDirection = Vector2.right;
     [HideInInspector] public bool propThrown = false;
     [HideInInspector] public bool canUse = false;
 
@@ -42,8 +42,6 @@ public class PropInteraction : MonoBehaviour
         else if(shoot)
         {
             canUse = shoot.canShoot;
-            shoot.shootDirection = useDirection;
-            
         }
     }
 
@@ -73,14 +71,14 @@ public class PropInteraction : MonoBehaviour
         }
     }
 
-    public void ThrowProp(float throwSpeed)
+    public void ThrowProp(Vector2 throwDirection, float throwSpeed)
     {
         if (!propThrown)
         {
             pickedupObjTag = null;
             GetComponent<SpriteRenderer>().enabled = true;
             gameObject.AddComponent<Rigidbody2D>();
-            GetComponent<Rigidbody2D>().velocity = useDirection.normalized * throwSpeed;
+            GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
             propThrown = true;
             StartCoroutine(SpinProp());
         }
@@ -97,7 +95,7 @@ public class PropInteraction : MonoBehaviour
         yield return null;
     }
 
-    public void UseProp()
+    public void UseProp(Vector2 direction)
     {
         if (attack != null)
         {
@@ -110,7 +108,7 @@ public class PropInteraction : MonoBehaviour
         }
         else if (shoot != null)
         {
-            shoot.startShoot();
+            shoot.startShoot(direction);
             shoot.canShoot = false;
             StartCoroutine(Cooldown());
         }

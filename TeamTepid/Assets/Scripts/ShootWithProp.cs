@@ -15,28 +15,26 @@ public class ShootWithProp : MonoBehaviour
     private bool stopShooting = false;
     public float muzzleFlashTime = 0.1f;
     public float autoShotCooldown = 0;
-    [HideInInspector] public Vector2 shootDirection = Vector2.zero;
-
     // Start is called before the first frame update
 
-    public void startShoot()
+    public void startShoot(Vector2 direction)
     {
         if (canShoot && ammoCount > 0)
         {
             switch (gunType)
             {
                 case GunType.PISTOL:
-                    createBullet(shootDirection);
+                    createBullet(direction);
                     --ammoCount;
                     break;
                 case GunType.SHOTGUN:
-                    createBullet(shootDirection + Vector2.Perpendicular(shootDirection), 1);
-                    createBullet(shootDirection, 2);
-                    createBullet(shootDirection - Vector2.Perpendicular(shootDirection),3);
+                    createBullet(direction + Vector2.Perpendicular(direction), 1);
+                    createBullet(direction, 2);
+                    createBullet(direction - Vector2.Perpendicular(direction),3);
                     --ammoCount;
                     break;
                 case GunType.ASSAULT_RIFLE:
-                    StartCoroutine(autoFire());
+                    StartCoroutine(autoFire(direction));
                     break;
                 default:
                     return;
@@ -63,12 +61,12 @@ public class ShootWithProp : MonoBehaviour
         stopShooting = var;
     }
 
-    IEnumerator autoFire()
+    IEnumerator autoFire(Vector2 direction)
     {
         while (!stopShooting)
         {
             Debug.Log("PEW");
-            createBullet(shootDirection);
+            createBullet(direction);
             --ammoCount;
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(autoShotCooldown);        

@@ -28,7 +28,6 @@ public class UseProp : MonoBehaviour
     {
         if (adjacentProp != null)
         {
-            adjacentProp.useDirection = GetComponent<ThePlayer>().getCurrentDirection();
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("NES BUTTON B"))
             {
                 if (!pickedUpProp)
@@ -40,8 +39,9 @@ public class UseProp : MonoBehaviour
                 {
                     Debug.Log("Throw Prop");
                     pickedUpProp = false;
+                    Vector2 currentDirection = GetComponent<ThePlayer>().getCurrentDirection();
                     //If player is not moving then throw is set to a default direction
-                    adjacentProp.ThrowProp(throwSpeed);
+                    adjacentProp.ThrowProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection, throwSpeed);
                     GetComponent<Animator>().SetInteger("Weapon Index", 0);
 
                 }
@@ -50,7 +50,8 @@ public class UseProp : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
                 {
-                    adjacentProp.UseProp();
+                    Vector2 currentDirection = GetComponent<ThePlayer>().getCurrentDirection();
+                    adjacentProp.UseProp(currentDirection == Vector2.zero ? adjacentProp.defaultUseDirection : currentDirection);
                 }
                 else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("NES BUTTON A"))
                 {

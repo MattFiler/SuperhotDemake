@@ -65,6 +65,6 @@ public class TimeManager : MonoSingleton<TimeManager>
     /* Force jump to max game speed */
     public void SetMaxSpeed()
     {
-        pauseGauge = 0.0f;
+        pauseGauge = 1.0f;
     }
 }
