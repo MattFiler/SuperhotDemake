@@ -115,7 +115,7 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 10
   DetectionRadius: 11.058643
-  aggroDelay: 0.2
+  aggroDelay: 0.4
   CombatRange: 8.820753
   ShotgunShot: {fileID: 0}
   isDead: 0
