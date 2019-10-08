@@ -8,9 +8,12 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [SerializeField] private GameObject inGameScoreUI;
     [SerializeField] private GameObject endGameScoreUI;
 
+    [SerializeField] private AudioSource mainMusicSFX;
     [SerializeField] private AudioSource introSFX;
     [SerializeField] private AudioSource victorySFX;
+    [SerializeField] private AudioSource victoryStingSFX;
     [SerializeField] private AudioSource defeatSFX;
+    [SerializeField] private AudioSource defeatStingSFX;
     private float totalScore = 0;
 
     [HideInInspector] public List<float> LevelTargetTime = new List<float>();
@@ -63,6 +66,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "SUPER HOT\n\nPRESS A";
         introSFX.Play();
+        mainMusicSFX.Stop();
     }
     
     /* Hide the intro UI */
@@ -72,7 +76,10 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         endGameScoreUI.SetActive(false);
         canStartGame = false;
 
+        victorySFX.Stop();
+        defeatSFX.Stop();
         introSFX.Stop();
+        mainMusicSFX.Play();
     }
 
     /* Show the time score UI */
@@ -84,6 +91,8 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore + "\n\nPRESS A";
         victorySFX.Play();
+        victoryStingSFX.Play();
+        mainMusicSFX.Stop();
     }
 
     /* Show the defeat screen */
@@ -95,5 +104,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore + "\n\nPRESS A";
         defeatSFX.Play();
+        defeatStingSFX.Play();
+        mainMusicSFX.Stop();
     }
 }
