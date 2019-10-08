@@ -51,6 +51,7 @@ public class ShootWithProp : MonoBehaviour
 
     private void createBullet(Vector2 direction, int spawnPosNum = 1)
     {
+        TimeManager.Instance.SetMaxSpeed();
         GameObject newBullet = Instantiate(bulletPrefab);
         GameObject bulletSpawn = transform.Find(gunType == GunType.SHOTGUN ? "BulletSpawn" + spawnPosNum.ToString() : "BulletSpawn").gameObject;
         newBullet.transform.position = bulletSpawn.transform.position;

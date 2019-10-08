@@ -24,7 +24,7 @@ public class TimeManager : MonoSingleton<TimeManager>
         {
             return;
         }
-
+        
         //Decrease the pause gauge when a movement direction is pressed
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -55,10 +55,6 @@ public class TimeManager : MonoSingleton<TimeManager>
             {
                 pauseGauge = maxPauseGauge;
             }
-            else
-            {
-                pauseGauge = minPauseGauge;
-            }
         }
 #endif
 
@@ -69,6 +65,6 @@ public class TimeManager : MonoSingleton<TimeManager>
     /* Force jump to max game speed */
     public void SetMaxSpeed()
     {
-        pauseGauge = 1.0f;
+        pauseGauge = 0.0f;
     }
 }
