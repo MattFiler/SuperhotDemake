@@ -53,6 +53,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (!player)
+            return;
         if (inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
