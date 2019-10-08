@@ -6,6 +6,10 @@ public class TimeManager : MonoSingleton<TimeManager>
 {
     private float pauseGauge = 1.0f;
     private float realDeltaTimeCumulative = 0.0f;
+    
+    //These values work backwards, so 1.0f is stopped, 0.0f is full speed
+    private float minPauseGauge = 0.95f; 
+    private float maxPauseGauge = 0.0f;
 
     /* Keep track of player input and handle time speedup/down */
     void Update()
@@ -34,13 +38,13 @@ public class TimeManager : MonoSingleton<TimeManager>
         {
             pauseGauge += 0.1f;
         }
-        if (pauseGauge <= 0.0f)
+        if (pauseGauge <= maxPauseGauge)
         {
-            pauseGauge = 0.0f;
+            pauseGauge = maxPauseGauge;
         }
-        else if (pauseGauge >= 1.0f)
+        else if (pauseGauge >= minPauseGauge)
         {
-            pauseGauge = 1.0f;
+            pauseGauge = minPauseGauge;
         }
 
 #if UNITY_EDITOR
@@ -49,11 +53,11 @@ public class TimeManager : MonoSingleton<TimeManager>
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
-                pauseGauge = 0.0f;
+                pauseGauge = maxPauseGauge;
             }
             else
             {
-                pauseGauge = 1.0f;
+                pauseGauge = minPauseGauge;
             }
         }
 #endif
@@ -65,6 +69,6 @@ public class TimeManager : MonoSingleton<TimeManager>
     /* Force jump to max game speed */
     public void SetMaxSpeed()
     {
-        pauseGauge = 0.0f;
+        pauseGauge = maxPauseGauge;
     }
 }
