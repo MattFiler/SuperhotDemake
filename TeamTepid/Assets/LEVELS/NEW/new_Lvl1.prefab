@@ -1235,6 +1235,11 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[12].z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 8811775238053439969, guid: e270d5de1d914db4c85199e585863891,
+        type: 3}
+      propertyPath: loopPath
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4068416076055909423, guid: e270d5de1d914db4c85199e585863891,
         type: 3}
       propertyPath: m_Layer
@@ -1342,27 +1347,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6867226750576746333, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
-        type: 3}
-      propertyPath: field of view
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 6867226750514016135, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
-        type: 3}
-      propertyPath: field of view
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 6867226750002487343, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
-        type: 3}
-      propertyPath: field of view
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 6867226749556385957, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
-        type: 3}
-      propertyPath: field of view
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 2084477398810673315, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+    - target: {fileID: 2084477397915123182, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
         type: 3}
       propertyPath: field of view
       value: 49
@@ -1372,7 +1357,27 @@ PrefabInstance:
       propertyPath: field of view
       value: 49
       objectReference: {fileID: 0}
-    - target: {fileID: 2084477397915123182, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+    - target: {fileID: 2084477398810673315, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+        type: 3}
+      propertyPath: field of view
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867226749556385957, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+        type: 3}
+      propertyPath: field of view
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867226750002487343, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+        type: 3}
+      propertyPath: field of view
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867226750514016135, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+        type: 3}
+      propertyPath: field of view
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867226750576746333, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
         type: 3}
       propertyPath: field of view
       value: 49
@@ -1398,11 +1403,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2759306234473783420}
     m_Modifications:
-    - target: {fileID: 4650768338100598441, guid: 2b5f43242d6eae849aca206510b09251,
-        type: 3}
-      propertyPath: m_Name
-      value: Shotgun
-      objectReference: {fileID: 0}
     - target: {fileID: 4944900492891845123, guid: 2b5f43242d6eae849aca206510b09251,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1457,6 +1457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650768338100598441, guid: 2b5f43242d6eae849aca206510b09251,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b5f43242d6eae849aca206510b09251, type: 3}
@@ -1653,6 +1658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: waypoints.Array.data[6].z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9040810648269016657, guid: 820055331abe58a4eaf14a1b0087e856,
+        type: 3}
+      propertyPath: loopPath
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6432139605329926519, guid: 820055331abe58a4eaf14a1b0087e856,
         type: 3}
