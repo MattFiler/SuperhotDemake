@@ -11,7 +11,7 @@ public class PropInteraction : MonoBehaviour
     public float rotationDelay = 0.5f;
     [Tooltip("The amount of rotation per step")]
     public float rotationStep = 5;
-    public Vector2 defaultUseDirection = Vector2.right;
+    [HideInInspector] public Vector2 useDirection = Vector2.zero;
     [HideInInspector] public bool propThrown = false;
     [HideInInspector] public bool canUse = false;
 
@@ -35,12 +35,14 @@ public class PropInteraction : MonoBehaviour
 
     private void Update()
     {
-        if(attack)
+        if(attack != null)
         {
             canUse = attack.canAttack;
         }
-        else if(shoot)
+        else if(shoot != null)
         {
+            shoot.setShootDirection(useDirection);
+
             canUse = shoot.canShoot;
         }
     }
@@ -65,20 +67,22 @@ public class PropInteraction : MonoBehaviour
                 index = (int)shoot.gunType;
             }
 
+            transform.rotation = pickUpTransform.rotation;
+
             pickUpTransform.GetComponent<SwapSprites>().swapSprite((SwapSprites.SpriteType)index);
 
             GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
-    public void ThrowProp(Vector2 throwDirection, float throwSpeed)
+    public void ThrowProp(float throwSpeed)
     {
         if (!propThrown)
         {
             pickedupObjTag = null;
             GetComponent<SpriteRenderer>().enabled = true;
             gameObject.AddComponent<Rigidbody2D>();
-            GetComponent<Rigidbody2D>().velocity = throwDirection.normalized * throwSpeed;
+            GetComponent<Rigidbody2D>().velocity = useDirection.normalized * throwSpeed;
             propThrown = true;
             StartCoroutine(SpinProp());
         }
@@ -95,7 +99,7 @@ public class PropInteraction : MonoBehaviour
         yield return null;
     }
 
-    public void UseProp(Vector2 direction)
+    public void UseProp()
     {
         if (attack != null)
         {
@@ -108,7 +112,7 @@ public class PropInteraction : MonoBehaviour
         }
         else if (shoot != null)
         {
-            shoot.startShoot(direction);
+            shoot.startShoot();
             shoot.canShoot = false;
             StartCoroutine(Cooldown());
         }

@@ -152,9 +152,9 @@ GameObject:
   - component: {fileID: 7533598897249178167}
   - component: {fileID: 4797816849114940944}
   - component: {fileID: 8747636294255182277}
-  - component: {fileID: 1713448359712119031}
   - component: {fileID: 4650768338100598442}
   - component: {fileID: 4650768338100598443}
+  - component: {fileID: 2391533495786299676}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Prop
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4650768338100598441}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.43, y: 0, z: 0}
   m_LocalScale: {x: 1.2903, y: 1.2903, z: 0.25806}
   m_Children:
@@ -243,8 +243,9 @@ MonoBehaviour:
   propType: 0
   rotationDelay: 0.1
   rotationStep: 20
-  defaultUseDirection: {x: 1, y: 0}
+  useDirection: {x: 0, y: 0}
   propThrown: 0
+  canUse: 0
   pickedupObjTag: 
 --- !u!114 &8747636294255182277
 MonoBehaviour:
@@ -258,24 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a684e44ea385b448456e3ae401603f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1713448359712119031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4650768338100598441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 304f82b3f01f2654b88e00949a34cc5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  propType: 0
-  rotationDelay: 0
-  rotationStep: 10
-  defaultUseDirection: {x: 1, y: 0}
-  propThrown: 0
-  pickedupObjTag: 
 --- !u!61 &4650768338100598442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323,3 +306,16 @@ MonoBehaviour:
   canShoot: 1
   muzzleFlashTime: 0.05
   autoShotCooldown: 0
+--- !u!114 &2391533495786299676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650768338100598441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lengthKeepVisible: 1

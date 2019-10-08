@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4592438370877054207}
   - component: {fileID: 3264075097631127049}
   - component: {fileID: 1317260626615925643}
+  - component: {fileID: 8720577387874361699}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreCollisionTag: 
+--- !u!114 &8720577387874361699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742526602024042253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea3534f2d1bb1a4a8e1aaff64d97cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lengthKeepVisible: 1

@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438721817478280596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.47, y: 2.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -97,13 +97,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  waypoints: []
+  waypoints:
+  - {x: -9.717371, y: -8.19625, z: 0}
+  - {x: -6.4488897, y: -8.19625, z: 0}
+  - {x: -6.146252, y: 0.21706486, z: 0}
+  - {x: -8.143657, y: 0.21706486, z: 0}
+  - {x: -8.143657, y: 11.535696, z: 0}
+  - {x: -8.083131, y: 5.6645336, z: 0}
+  - {x: 0.08807564, y: 5.543479, z: 0}
+  - {x: -0.032983065, y: -6.9251738, z: 0}
+  - {x: 0.088071465, y: 5.543479, z: 0}
+  - {x: 8.440858, y: 5.543479, z: 0}
+  - {x: 8.561907, y: 11.838333, z: 0}
+  - {x: 8.561911, y: 5.7855887, z: 0}
+  - {x: 8.259275, y: -7.2883387, z: 0}
   loopPath: 1
   walkSpeed: 5
   runSpeed: 10
-  DetectionRadius: 4.97586
+  DetectionRadius: 11.058643
   aggroDelay: 0.2
-  CombatRange: 2.124578
+  CombatRange: 8.820753
   ShotgunShot: {fileID: 0}
   isDead: 0
   didDebugDeath: 0
@@ -144,7 +157,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438721817478280596}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -164,6 +177,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 154899358162235061}
     m_Modifications:
+    - target: {fileID: 4650768338100598441, guid: 2b5f43242d6eae849aca206510b09251,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun
+      objectReference: {fileID: 0}
     - target: {fileID: 4944900492891845123, guid: 2b5f43242d6eae849aca206510b09251,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -219,19 +237,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4650768338100598441, guid: 2b5f43242d6eae849aca206510b09251,
-        type: 3}
-      propertyPath: m_Name
-      value: Shotgun
-      objectReference: {fileID: 0}
     - target: {fileID: 7533598897249178167, guid: 2b5f43242d6eae849aca206510b09251,
         type: 3}
-      propertyPath: m_SortingOrder
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7533598897249178167, guid: 2b5f43242d6eae849aca206510b09251,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
