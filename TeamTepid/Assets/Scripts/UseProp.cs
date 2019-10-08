@@ -8,7 +8,7 @@ public class UseProp : MonoBehaviour
 
     private bool pickedUpProp;
     [SerializeField]  private PropInteraction adjacentProp;
-   
+    bool usingProp = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,21 +31,28 @@ public class UseProp : MonoBehaviour
             adjacentProp.useDirection = GetComponent<ThePlayer>().getCurrentDirection();
 
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
+            if(!pickedUpProp)
             {
-                if (!pickedUpProp)
+                if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
                 {
                     adjacentProp.PickUpProp(transform);
                     pickedUpProp = true;
                 }
-                else if(adjacentProp.canUse)
-                {
-                    adjacentProp.UseProp();
-                }
             }
-            else if((Input.GetKeyUp(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A") && pickedUpProp))
+            else
             {
-                adjacentProp.StopPropUse();
+                if (!usingProp && adjacentProp.canUse && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A")))
+                {
+                    Debug.Log("down");
+                    adjacentProp.UseProp();
+                    usingProp = true;
+                }
+                else if(usingProp && (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("NES BUTTON A")))
+                {
+                    Debug.Log("up");
+                    adjacentProp.StopPropUse();
+                    usingProp = false;
+                }
             }
 
 
