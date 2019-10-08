@@ -93,6 +93,7 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator DeathAnim()
     {
         AiDeathSfx.Instance.PlaySFX();
+        Destroy(GetComponent<Rigidbody2D>());
         isDead = true;
         for (int i = 1; i < 6; i++)
         {
