@@ -23,12 +23,15 @@ public class LevelScript : MonoBehaviour
     {
         bool anyAlive = false;
         bool anySpawned = false;
+        ThePlayer playerRef = null;
         foreach (EnemyAI anEnemy in levelEnemies)
         {
             if (anEnemy != null) anySpawned = true;
             if (anEnemy != null && !anEnemy.isDead) anyAlive = true;
+            if (anEnemy != null) playerRef = anEnemy.player.GetComponent<ThePlayer>();
         }
         if (!anyAlive) ScoreManager.Instance.FreezeScore();
         if (!anySpawned) ScoreManager.Instance.ShowNextLevelPrompt();
+        if (playerRef != null) playerRef.isInvincible = !anyAlive;
     }
 }

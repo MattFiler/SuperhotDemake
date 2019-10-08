@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [Tooltip("The players game object.")]
-    [SerializeField] private GameObject player;
+    [SerializeField] public GameObject player;
     [Tooltip("The AI will path between these points in order.")]
     public Vector3[] waypoints;
     [Tooltip("If true the AI will start at waypoint index 0 after it visists all locations, otherwise the AI will just stop.")]

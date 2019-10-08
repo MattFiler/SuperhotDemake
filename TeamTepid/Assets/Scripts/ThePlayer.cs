@@ -6,6 +6,7 @@ using UnityEngine;
 public class ThePlayer : MonoBehaviour
 {
     [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool isInvincible = false;
 
     public enum Direction {UP, DOWN, LEFT, RIGHT }
     Direction currentDirection = Direction.RIGHT;
@@ -53,6 +54,7 @@ public class ThePlayer : MonoBehaviour
 
     public void Kill()
     {
+        if (isInvincible) return;
         StartCoroutine(DeathAnim());
     }
 
