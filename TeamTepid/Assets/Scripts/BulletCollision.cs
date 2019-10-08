@@ -10,7 +10,7 @@ public class BulletCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //Kill if we hit a player or AI
-        if (collider.CompareTag(ignoreCollisionTag))
+        if (collider.CompareTag(ignoreCollisionTag) || collider.CompareTag("Bullet") || collider.CompareTag("Prop"))
         {
             return;
         }

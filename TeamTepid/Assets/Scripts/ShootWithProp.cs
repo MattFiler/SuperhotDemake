@@ -45,7 +45,7 @@ public class ShootWithProp : MonoBehaviour
     private void createBullet(Vector2 direction, int spawnPosNum = 1)
     {
         GameObject newBullet = Instantiate(bulletPrefab);
-        GameObject bulletSpawn = GameObject.Find(gunType == GunType.SHOTGUN ? "BulletSpawn" + spawnPosNum.ToString() : "BulletSpawn");
+        GameObject bulletSpawn = transform.Find(gunType == GunType.SHOTGUN ? "BulletSpawn" + spawnPosNum.ToString() : "BulletSpawn").gameObject;
         newBullet.transform.position = bulletSpawn.transform.position;
         if((gunType == GunType.SHOTGUN && spawnPosNum == 2) || gunType != GunType.SHOTGUN)
         {
