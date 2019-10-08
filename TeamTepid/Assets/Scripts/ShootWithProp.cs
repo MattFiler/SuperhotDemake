@@ -29,18 +29,18 @@ public class ShootWithProp : MonoBehaviour
     public void startShoot()
     {
         //Debug.Log(shootDirection);
-        if (canShoot && ammoCount > 0)
+        if (canShoot && ammoCount > 0 /*&& shootDirection != Vector2.zero*/)
         {
             switch (gunType)
             {
                 case GunType.PISTOL:
-                    createBullet(GetDirection());
+                    createBullet(shootDirection);
                     --ammoCount;
                     break;
                 case GunType.SHOTGUN:
-                    createBullet(GetDirection() + Vector2.Perpendicular(shootDirection), 1);
-                    createBullet(GetDirection(), 2);
-                    createBullet(GetDirection() - Vector2.Perpendicular(shootDirection),3);
+                    createBullet(shootDirection + Vector2.Perpendicular(shootDirection), 1);
+                    createBullet(shootDirection, 2);
+                    createBullet(shootDirection - Vector2.Perpendicular(shootDirection),3);
                     --ammoCount;
                     break;
                 case GunType.ASSAULT_RIFLE:
@@ -76,7 +76,7 @@ public class ShootWithProp : MonoBehaviour
         while (!stopShooting)
         {
             Debug.Log("PEW");
-            createBullet(GetDirection());
+            createBullet(shootDirection);
             --ammoCount;
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(autoShotCooldown);        
@@ -94,8 +94,4 @@ public class ShootWithProp : MonoBehaviour
 
     }
 
-    private Vector2 GetDirection()
-    {
-        return shootDirection == Vector2.zero ? shootDirectionDefault : shootDirection;
-    }
 }

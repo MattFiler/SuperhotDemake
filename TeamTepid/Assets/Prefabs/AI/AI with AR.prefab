@@ -239,6 +239,11 @@ PrefabInstance:
       propertyPath: autoShotCooldown
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6692124287208778349, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: shootCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6692124286889930319, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
         type: 3}
       propertyPath: m_Layer
