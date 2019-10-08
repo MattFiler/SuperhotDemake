@@ -5,7 +5,7 @@ using UnityEngine;
 public class Visibility : MonoBehaviour
 {
     private float timer = 0;
-    private float lengthKeepVisible = 0.2f;
+    private float lengthKeepVisible = 0.1f;
 
     private bool wasSeenOnce;
     private bool wasSeenForever;
