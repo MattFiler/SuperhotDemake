@@ -115,7 +115,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -189,7 +189,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -263,7 +263,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -337,7 +337,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -616,7 +616,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -690,7 +690,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -764,7 +764,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
@@ -838,7 +838,7 @@ Camera:
     width: 0.0001
     height: 0.0001
   near clip plane: 0.5
-  far clip plane: 13
+  far clip plane: 15
   field of view: 47
   orthographic: 0
   orthographic size: 5
