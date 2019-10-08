@@ -22,7 +22,7 @@ public class LevelLoader : MonoSingleton<LevelLoader>
     /* Handle intro/gameover input */
     private void Update()
     {
-        if (ScoreManager.Instance.canStartGame && Input.GetButtonDown("NES BUTTON A"))
+        if (ScoreManager.Instance.canStartGame && (Input.GetButtonDown("NES BUTTON A")||Input.GetKeyDown(KeyCode.E)))
         {
             ScoreManager.Instance.canStartGame = false;
             ScoreManager.Instance.ClearAllScore();
