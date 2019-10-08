@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713448358209749381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0709994, y: 0.1, z: 0}
+  m_LocalPosition: {x: 1.0709994, y: 0.1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944900492891845123}
@@ -104,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713448358505923920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0709994, y: 0.3, z: 0}
+  m_LocalPosition: {x: 1.0709994, y: 0.3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944900492891845123}
@@ -134,7 +134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713448359706075265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.071, y: -0.4, z: 0}
+  m_LocalPosition: {x: 1.071, y: -0.4, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944900492891845123}
@@ -245,6 +245,7 @@ MonoBehaviour:
   rotationStep: 20
   defaultUseDirection: {x: 1, y: 0}
   propThrown: 0
+  pickedupObjTag: 
 --- !u!114 &8747636294255182277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   rotationStep: 10
   defaultUseDirection: {x: 1, y: 0}
   propThrown: 0
+  pickedupObjTag: 
 --- !u!61 &4650768338100598442
 BoxCollider2D:
   m_ObjectHideFlags: 0

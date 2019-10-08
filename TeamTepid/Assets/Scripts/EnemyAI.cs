@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] LayerMask raycastTargets;
 
     private bool backTracking = false;
-
+    private PropInteraction prop;
     enum EndOfPathBehaviour
     {
         DONT_LOOP,
@@ -44,6 +44,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        if(GetComponentInChildren<PropInteraction>())
+        {
+            prop = GetComponentInChildren<PropInteraction>();
+        }
         //cf.layerMask = raycastTargets;
     }
 
@@ -126,7 +130,7 @@ public class EnemyAI : MonoBehaviour
     {
         // Chase/Fighting Code
         if (inCombat)
-        {
+        { 
             Vector3 moveVector = player.transform.position - transform.position;
             moveVector.Normalize();
             moveVector *= runSpeed / 50;
@@ -134,12 +138,15 @@ public class EnemyAI : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             if (shouldChase)
             {
+                if(prop)
+                {
+                    prop.StopPropUse();
+                }
                 transform.position += moveVector;
             }
-            else
+            else if(prop && prop.canUse)
             {
-                // Attack code
-                //GetComponentInChildren<PropInteraction>().UseProp(moveVector);
+                prop.UseProp(moveVector);
             }
         }
         // Following waypoints code

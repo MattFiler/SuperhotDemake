@@ -7,17 +7,22 @@ public class BulletCollision : MonoBehaviour
     [HideInInspector] public string ignoreCollisionTag;
 
     /* When a bullet hits something, do stuff */
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         //Kill if we hit a player or AI
-        if (ignoreCollisionTag != "Player" && collision.gameObject.CompareTag("Player"))
+        if (collider.CompareTag(ignoreCollisionTag))
+        {
+            return;
+        }
+
+        if (ignoreCollisionTag != "Player" && collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit player");
-            collision.gameObject.GetComponent<ThePlayer>().isDead = true;
+            collider.gameObject.GetComponent<ThePlayer>().isDead = true;
         }
-        else if (ignoreCollisionTag != "Ai" && collision.gameObject.CompareTag("Ai"))
+        else if (ignoreCollisionTag != "Ai" && collider.gameObject.CompareTag("Ai"))
         {
-            collision.gameObject.GetComponent<EnemyAI>().isDead = true;
+            collider.gameObject.GetComponent<EnemyAI>().isDead = true;
         }
 
         //Destroy bullet

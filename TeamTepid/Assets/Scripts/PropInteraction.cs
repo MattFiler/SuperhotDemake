@@ -13,6 +13,7 @@ public class PropInteraction : MonoBehaviour
     public float rotationStep = 5;
     public Vector2 defaultUseDirection = Vector2.right;
     [HideInInspector] public bool propThrown = false;
+    [HideInInspector] public bool canUse = false;
 
     private AttackWithProp attack;
     private ShootWithProp shoot;
@@ -31,6 +32,19 @@ public class PropInteraction : MonoBehaviour
             propType = PropType.RANGED;
         }
     }
+
+    private void Update()
+    {
+        if(attack)
+        {
+            canUse = attack.canAttack;
+        }
+        else if(shoot)
+        {
+            canUse = shoot.canShoot;
+        }
+    }
+
 
     public void PickUpProp(Transform pickUpTransform)
     {
