@@ -10,7 +10,7 @@ public class Visibility : MonoBehaviour
     private bool wasSeenOnce;
     private bool wasSeenForever;
 
-    public bool activateSeenForever = true;
+    private bool activateSeenForever = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class Visibility : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
     }
@@ -33,7 +33,7 @@ public class Visibility : MonoBehaviour
             }
             else
             {
-                if (timer >= 0)
+                if (timer > 0)
                 {
                     if (Camera.current.tag == "VisibilityChecker")
                     {
@@ -48,8 +48,8 @@ public class Visibility : MonoBehaviour
                         }
 
                         this.gameObject.layer = 2;
-                        wasSeenOnce = true;
-                        timer = 0;
+                        wasSeenForever = true;
+                        //timer = 0;
                     }
                     else
                     {
