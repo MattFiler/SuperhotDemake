@@ -84,6 +84,12 @@ public class EnemyAI : MonoBehaviour
 #endif
     }
 
+    public void Kill()
+    {
+        Destroy(gameObject);
+
+    }
+
     private void DropCombat()
     {
         inCombat = false;

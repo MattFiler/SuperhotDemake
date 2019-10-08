@@ -22,7 +22,7 @@ public class BulletCollision : MonoBehaviour
         }
         else if (ignoreCollisionTag != "Ai" && collider.gameObject.CompareTag("Ai"))
         {
-            collider.gameObject.GetComponent<EnemyAI>().isDead = true;
+            collider.gameObject.GetComponent<EnemyAI>().Kill();
         }
 
         //Destroy bullet
