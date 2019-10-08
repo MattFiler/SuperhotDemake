@@ -87,15 +87,16 @@ public class UseProp : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnChildTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Enter2");
         if (!pickedUpProp && collision.gameObject.CompareTag("Prop"))
         {
             adjacentProp = collision.GetComponent<PropInteraction>();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnChildTriggerExit2D(Collider2D collision)
     {
         if (!pickedUpProp && collision.gameObject.CompareTag("Prop"))
         {
