@@ -5,7 +5,10 @@ using UnityEngine;
 public class Visibility : MonoBehaviour
 {
     private float timer = 0;
-    public float lengthKeepVisible = 1.0f;
+    private float lengthKeepVisible = 0.2f;
+
+    private bool wasSeenOnce = false;
+    private bool wasSeenForever = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,9 +16,9 @@ public class Visibility : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
     }
 
     private void OnWillRenderObject()
@@ -24,19 +27,17 @@ public class Visibility : MonoBehaviour
         {
             if (Camera.current.tag == "VisibilityChecker")
             {
-                if (this.gameObject.tag == "DebugTag")
+                if (this.gameObject.tag == "Ai")
                 {
                     Debug.Log(Camera.current.name);
                 }
 
-                this.gameObject.layer = 0;
+                this.gameObject.layer = 2;
                 timer = 0;
             }
             else
             {
-
                 this.gameObject.layer = 8;
-
             }
         }
 

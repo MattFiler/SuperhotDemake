@@ -47,16 +47,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15.000004
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -121,16 +121,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -195,16 +195,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -269,16 +269,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -501,8 +501,8 @@ MonoBehaviour:
   - {fileID: 7937503191338652945, guid: 2809c5a50f0c5134bb6825618a3b64a8, type: 3}
   - {fileID: 21300000, guid: 6dacd82e9543b12488eda8d6dbf3e9cf, type: 3}
   - {fileID: 944611479809035805, guid: 2acf208976510b54fae07b897c618c6e, type: 3}
-  - {fileID: 21300000, guid: 00eac2c9fb7504e44b01136efca0b800, type: 3}
   - {fileID: 21300000, guid: 0c771863fe7b37045a25afa79b9cc1ce, type: 3}
+  - {fileID: 21300000, guid: 00eac2c9fb7504e44b01136efca0b800, type: 3}
 --- !u!114 &7744451060105653186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6f4072097e3ba44910af3460bf9c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwSpeed: 0
+  throwSpeed: 1
   adjacentProp: {fileID: 0}
 --- !u!1 &6867226749556385963
 GameObject:
@@ -564,16 +564,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -638,16 +638,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -712,16 +712,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -786,16 +786,16 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 48.12937
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 0.0001
     height: 0.0001
-  near clip plane: 0.3
+  near clip plane: 0.5
   far clip plane: 13
-  field of view: 15
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

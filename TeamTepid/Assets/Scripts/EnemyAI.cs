@@ -55,6 +55,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!player)
             return;
+
         if (inCombat)
         {
             // Stop/Start chasing depending on the distance to the player
@@ -143,6 +144,12 @@ public class EnemyAI : MonoBehaviour
             moveVector.Normalize();
             moveVector *= runSpeed / 50;
             var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+
+            if (prop != null)
+            {
+                prop.useDirection = moveVector;
+            }
+
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             if (shouldChase)
             {
@@ -154,7 +161,7 @@ public class EnemyAI : MonoBehaviour
             }
             else if(prop && prop.canUse)
             {
-                //prop.UseProp(moveVector);
+                prop.UseProp();
             }
         }
         // Following waypoints code

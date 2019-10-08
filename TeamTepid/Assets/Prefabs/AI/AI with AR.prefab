@@ -144,7 +144,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7922303165108889301}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -168,6 +168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Assault rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692124287208778348, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6692124287208778345, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
         type: 3}
@@ -228,6 +233,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692124287208778349, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: autoShotCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692124286889930319, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b, type: 3}
