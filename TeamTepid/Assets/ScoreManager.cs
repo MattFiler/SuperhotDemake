@@ -8,6 +8,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [SerializeField] private GameObject inGameScoreUI;
     [SerializeField] private GameObject endGameScoreUI;
 
+    [SerializeField] private AudioSource introSFX;
     [SerializeField] private AudioSource victorySFX;
     [SerializeField] private AudioSource defeatSFX;
     private float totalScore = 0;
@@ -15,12 +16,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [HideInInspector] public List<float> LevelTargetTime = new List<float>();
     private float timeInLevel = 0.0f;
 
-    /* Show the in-game UI to start with */
-    private void Start()
-    {
-        inGameScoreUI.SetActive(true);
-        endGameScoreUI.SetActive(false);
-    }
+    public bool canStartGame = false;
 
     /* Monitor the time spent in a level */
     public void Update()
@@ -46,10 +42,37 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         totalScore += CalculateLevelScore();
     }
 
+    /* Clear the total score */
+    public void ClearAllScore()
+    {
+        totalScore = 0;
+    }
+
     /* Get the total score */
     public float GetTotalScore()
     {
         return totalScore;
+    }
+
+    /* Show the intro UI */
+    public void ShowIntroScreen()
+    {
+        inGameScoreUI.SetActive(false);
+        endGameScoreUI.SetActive(true);
+        canStartGame = true;
+
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "SUPER HOT\n\nPRESS A";
+        introSFX.Play();
+    }
+    
+    /* Hide the intro UI */
+    public void HideIntroScreen()
+    {
+        inGameScoreUI.SetActive(true);
+        endGameScoreUI.SetActive(false);
+        canStartGame = false;
+
+        introSFX.Stop();
     }
 
     /* Show the time score UI */
@@ -57,8 +80,9 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
+        canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore;
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore + "\n\nPRESS A";
         victorySFX.Play();
     }
 
@@ -67,8 +91,9 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
+        canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore;
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore + "\n\nPRESS A";
         defeatSFX.Play();
     }
 }
