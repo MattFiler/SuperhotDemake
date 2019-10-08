@@ -28,13 +28,10 @@ public class UseProp : MonoBehaviour
     {
         if (adjacentProp != null)
         {
-            Vector2 direction = GetComponent<ThePlayer>().getCurrentDirection();
+            adjacentProp.useDirection = GetComponent<ThePlayer>().getCurrentDirection();
 
 
-            adjacentProp.useDirection = direction;
-            //Debug.Log(adjacentProp.useDirection);
-
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("NES BUTTON B"))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
             {
                 if (!pickedUpProp)
                 {
@@ -43,24 +40,50 @@ public class UseProp : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Throw Prop");
-                    pickedUpProp = false;
-                    //If player is not moving then throw is set to a default direction
-                    adjacentProp.ThrowProp( throwSpeed);
-                    
-                }
-            }
-            else if (HasProp())
-            {
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
-                {
                     adjacentProp.UseProp();
                 }
-                else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("NES BUTTON A"))
-                {
-                    adjacentProp.StopPropUse();
-                }
             }
+            else if((Input.GetKeyUp(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A") && pickedUpProp))
+            {
+                adjacentProp.StopPropUse();
+            }
+
+
+
+
+
+
+
+            //adjacentProp.useDirection = direction;
+            ////Debug.Log(adjacentProp.useDirection);
+
+            //if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("NES BUTTON B"))
+            //{
+            //    if (!pickedUpProp)
+            //    {
+            //        adjacentProp.PickUpProp(transform);
+            //        pickedUpProp = true;
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("Throw Prop");
+            //        pickedUpProp = false;
+            //        //If player is not moving then throw is set to a default direction
+            //        adjacentProp.ThrowProp( throwSpeed);
+
+            //    }
+            //}
+            //else if (HasProp())
+            //{
+            //    if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("NES BUTTON A"))
+            //    {
+            //        adjacentProp.UseProp();
+            //    }
+            //    else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("NES BUTTON A"))
+            //    {
+            //        adjacentProp.StopPropUse();
+            //    }
+        
         }
     }
 
