@@ -200,7 +200,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletPrefab: {fileID: 4742526602024042253, guid: eb7dff21bdd1a3a469fa469593668075,
     type: 3}
-  shootCooldown: 0.1
+  shootCooldown: 0.7
   canShoot: 1
   muzzleFlashTime: 0.05
   autoShotCooldown: 0
