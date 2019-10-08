@@ -16,6 +16,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [SerializeField] private AudioSource defeatSFX;
     [SerializeField] private AudioSource defeatStingSFX;
     private float totalScore = 0;
+    private int levelScoreExtra = 0;
 
     [HideInInspector] public List<float> LevelTargetTime = new List<float>();
     private float timeInLevel = 0.0f;
@@ -37,7 +38,13 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         if (levelScore <= 0) return 0;
         levelScore *= 10;
 
-        return (int)levelScore;
+        return (int)levelScore + levelScoreExtra;
+    }
+
+    /* Add to the score */
+    public void AddToLevelScore(int value = 100)
+    {
+        levelScoreExtra += value;
     }
 
     /* Add to the score based on time in level */
@@ -45,6 +52,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         timeInLevel = 0.0f;
         totalScore += CalculateLevelScore();
+        levelScoreExtra = 0;
     }
 
     /* Clear the total score */
