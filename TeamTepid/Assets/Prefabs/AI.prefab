@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 447344842836311536}
   - component: {fileID: 2676844924770967940}
   - component: {fileID: 2676844924770967939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AI
   m_TagString: Ai
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   didDebugDeath: 0
   raycastTargets:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!61 &2676844924770967940
 BoxCollider2D:
   m_ObjectHideFlags: 0
