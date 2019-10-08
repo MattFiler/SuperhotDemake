@@ -23,7 +23,7 @@ public class LevelScript : MonoBehaviour
     {
         foreach (EnemyAI anEnemy in levelEnemies)
         {
-            if (!anEnemy.isDead)
+            if (anEnemy != null)
             {
                 return;
             }
