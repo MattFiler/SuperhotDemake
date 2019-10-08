@@ -15,20 +15,21 @@ public class LevelLoader : MonoSingleton<LevelLoader>
     /* On start of game, load level 0 */
     private void Start()
     {
+        ScoreManager.Instance.ShowIntroScreen();
         ScoreManager.Instance.LevelTargetTime = LevelTimesToAimFor;
-        LoadNewLevel(0);
     }
-
-#if UNITY_EDITOR
-    /* Debug: skip to next level */
+    
+    /* Handle intro/gameover input */
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (ScoreManager.Instance.canStartGame && (Input.GetButtonDown("NES BUTTON A")||Input.GetKeyDown(KeyCode.Space)))
         {
-            LoadNextLevel();
+            ScoreManager.Instance.canStartGame = false;
+            ScoreManager.Instance.ClearAllScore();
+            ScoreManager.Instance.HideIntroScreen();
+            LoadNewLevel(0);
         }
     }
-#endif
 
     /* Get the number of levels */
     public int GetLevelCount()
