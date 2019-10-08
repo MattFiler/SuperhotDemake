@@ -87,8 +87,9 @@ public class EnemyAI : MonoBehaviour
 
     public void Kill()
     {
+        isDead = true;
+        AiDeathSfx.Instance.PlaySFX();
         Destroy(gameObject);
-
     }
 
     private void DropCombat()
