@@ -146,7 +146,7 @@ public class EnemyAI : MonoBehaviour
             }
             else if(prop && prop.canUse)
             {
-                prop.UseProp(moveVector);
+                //prop.UseProp();
             }
         }
         // Following waypoints code

@@ -205,8 +205,9 @@ MonoBehaviour:
   propType: 0
   rotationDelay: 0
   rotationStep: 20
-  defaultUseDirection: {x: 1, y: 0}
+  useDirection: {x: 0, y: 0}
   propThrown: 0
+  canUse: 0
   pickedupObjTag: 
 --- !u!114 &6692124287208778349
 MonoBehaviour:
@@ -228,4 +229,5 @@ MonoBehaviour:
   shootCooldown: 0
   canShoot: 1
   muzzleFlashTime: 0.05
-  autoShotCooldown: 0.1
+  autoShotCooldown: 0.75
+  shootDirection: {x: 0, y: 0}

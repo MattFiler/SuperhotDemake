@@ -9,12 +9,12 @@ public class BulletCollision : MonoBehaviour
     /* When a bullet hits something, do stuff */
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        //Kill if we hit a player or AI
-        if (collider.CompareTag(ignoreCollisionTag))
+        if (collider.CompareTag(ignoreCollisionTag) || collider.CompareTag("Bullet") || collider.CompareTag("Prop"))
         {
             return;
         }
 
+        //Kill if we hit a player or AI
         if (ignoreCollisionTag != "Player" && collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit player");
