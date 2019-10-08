@@ -22,7 +22,7 @@ public class BulletCollision : MonoBehaviour
         if (ignoreCollisionTag != "Player" && collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("hit player");
-            collider.gameObject.GetComponent<ThePlayer>().isDead = true;
+            collider.gameObject.GetComponent<ThePlayer>().Kill();
         }
         else if (ignoreCollisionTag != "Ai" && collider.gameObject.CompareTag("Ai"))
         {

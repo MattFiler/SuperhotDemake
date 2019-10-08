@@ -13,14 +13,8 @@ public class ThePlayer : MonoBehaviour
     /* Handle player input & move appropriately */
     void FixedUpdate()
     {
-        //Destroy on death
-        if (isDead)
-        {
-            Debug.Log("PLAYER IS DEAD");
-            gameObject.SetActive(false);
-            ScoreManager.Instance.ShowDefeatScreen();
-            return;
-        }
+        if (isDead) return;
+        if (!isDead) gameObject.SetActive(true);
 
         //Turn the player to the correct direction
         bool shouldMove = false;
@@ -54,6 +48,24 @@ public class ThePlayer : MonoBehaviour
         {
             gameObject.transform.position += gameObject.transform.right / 6.5f;
         }
+    }
+
+    public void Kill()
+    {
+        StartCoroutine(DeathAnim());
+    }
+
+    private IEnumerator DeathAnim()
+    {
+        AiDeathSfx.Instance.PlaySFX();
+        isDead = true;
+        for (int i = 1; i < 6; i++)
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("player_death_" + i);
+        }
+        gameObject.SetActive(false);
+        ScoreManager.Instance.ShowDefeatScreen();
     }
 
     public Vector2 getCurrentDirection()

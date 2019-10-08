@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
         isDead = true;
         for (int i = 1; i < 6; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("enemy_death_" + i);
         }
         Destroy(gameObject);
