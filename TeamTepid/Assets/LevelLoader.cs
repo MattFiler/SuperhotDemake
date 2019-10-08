@@ -62,12 +62,13 @@ public class LevelLoader : MonoSingleton<LevelLoader>
     /* Load a new level by index */
     public void LoadNewLevel(int index)
     {
+        ScoreManager.Instance.ClearTimeScore();
+
         Destroy(CurrentLevel);
         SceneManager.LoadScene(index+1);
         CurrentLevel = Instantiate(LevelPrefabs[index], new Vector3(0,0,0), Quaternion.identity) as GameObject;
         CurrentLevelIndex = index;
 
-        ScoreManager.Instance.ClearTimeScore();
         TextTimer.Instance.SetTextAndPlay(LevelNames[index], 1);
     }
 
