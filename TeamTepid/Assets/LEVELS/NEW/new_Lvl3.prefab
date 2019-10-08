@@ -1044,12 +1044,12 @@ PrefabInstance:
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}
       propertyPath: DetectionRadius
-      value: 11.058643
+      value: 31.328468
       objectReference: {fileID: 0}
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}
       propertyPath: CombatRange
-      value: 8.820753
+      value: 17.970345
       objectReference: {fileID: 0}
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}
@@ -1163,6 +1163,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3705571584439785443}
     m_Modifications:
+    - target: {fileID: 3837139728991584173, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4158993683738913959, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1218,11 +1223,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3837139728991584173, guid: 573b38dcb60c7a343b0ec2904fcd4ebe,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573b38dcb60c7a343b0ec2904fcd4ebe, type: 3}
 --- !u!1 &7760144380960151899 stripped
@@ -1244,6 +1244,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2759306234473783420}
     m_Modifications:
+    - target: {fileID: 6692124287208778348, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: m_Name
+      value: Assault rifle
+      objectReference: {fileID: 0}
     - target: {fileID: 6692124287208778345, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1298,11 +1303,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6692124287208778348, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
-        type: 3}
-      propertyPath: m_Name
-      value: Assault rifle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b, type: 3}
@@ -1387,12 +1387,12 @@ PrefabInstance:
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}
       propertyPath: DetectionRadius
-      value: 11.058643
+      value: 24.630295
       objectReference: {fileID: 0}
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}
       propertyPath: CombatRange
-      value: 8.820753
+      value: 19.208931
       objectReference: {fileID: 0}
     - target: {fileID: 5684375353676479136, guid: e3d79bea6df025440a4464e7e64d7679,
         type: 3}

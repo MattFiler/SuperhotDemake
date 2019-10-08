@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunType: 5
-  bulletSpeed: 20
+  bulletSpeed: 10
   bulletPrefab: {fileID: 4742526602024042253, guid: eb7dff21bdd1a3a469fa469593668075,
     type: 3}
   shootCooldown: 0.5
