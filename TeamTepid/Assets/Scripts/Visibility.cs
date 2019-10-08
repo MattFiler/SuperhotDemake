@@ -7,8 +7,10 @@ public class Visibility : MonoBehaviour
     private float timer = 0;
     private float lengthKeepVisible = 0.2f;
 
-    private bool wasSeenOnce = false;
-    private bool wasSeenForever = false;
+    private bool wasSeenOnce;
+    private bool wasSeenForever;
+
+    public bool activateSeenForever = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,23 +25,59 @@ public class Visibility : MonoBehaviour
 
     private void OnWillRenderObject()
     {
-        if (timer >= lengthKeepVisible)
+        if(activateSeenForever)
         {
-            if (Camera.current.tag == "VisibilityChecker")
+            if (wasSeenForever)
             {
-                if (this.gameObject.tag == "Ai")
-                {
-                    Debug.Log(Camera.current.name);
-                }
-
                 this.gameObject.layer = 2;
-                timer = 0;
             }
             else
             {
-                this.gameObject.layer = 8;
+                if (timer >= 0)
+                {
+                    if (Camera.current.tag == "VisibilityChecker")
+                    {
+                        if (wasSeenOnce)
+                        {
+                            wasSeenForever = true;
+                        }
+
+                        if (this.gameObject.tag == "Ai")
+                        {
+                            //Debug.Log(Camera.current.name);
+                        }
+
+                        this.gameObject.layer = 2;
+                        wasSeenOnce = true;
+                        timer = 0;
+                    }
+                    else
+                    {
+                        this.gameObject.layer = 8;
+                        wasSeenOnce = false;
+                    }
+                }
             }
         }
+        else
+        {
+            if (timer >= lengthKeepVisible)
+            {
+                if (Camera.current.tag == "VisibilityChecker")
+                {
+                    if (this.gameObject.tag == "Ai")
+                    {
+                        //Debug.Log(Camera.current.name);
+                    }
 
+                    this.gameObject.layer = 2;
+                    timer = 0;
+                }
+                else
+                {
+                    this.gameObject.layer = 8;
+                }
+            }
+        }
     }
 }
