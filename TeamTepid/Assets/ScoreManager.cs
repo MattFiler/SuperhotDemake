@@ -7,6 +7,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 {
     [SerializeField] private GameObject inGameScoreUI;
     [SerializeField] private GameObject endGameScoreUI;
+    [SerializeField] private GameObject nextLevelPrompt;
 
     [SerializeField] private AudioSource mainMusicSFX;
     [SerializeField] private AudioSource introSFX;
@@ -20,6 +21,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     private float timeInLevel = 0.0f;
 
     public bool canStartGame = false;
+    public bool canGoToNextLevel = false;
 
     /* Monitor the time spent in a level */
     public void Update()
@@ -62,6 +64,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
+        nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "SUPER HOT\n\nPRESS B";
@@ -74,6 +77,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         inGameScoreUI.SetActive(true);
         endGameScoreUI.SetActive(false);
+        nextLevelPrompt.SetActive(false);
         canStartGame = false;
 
         victorySFX.Stop();
@@ -82,11 +86,32 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         mainMusicSFX.Play();
     }
 
+    /* Show "next level" ui prompt */
+    public void ShowNextLevelPrompt()
+    {
+        inGameScoreUI.SetActive(false);
+        nextLevelPrompt.SetActive(true);
+        canGoToNextLevel = true;
+
+        mainMusicSFX.Stop();
+    }
+
+    /* Hide "next level" ui prompt */
+    public void HideNextLevelPrompt()
+    {
+        inGameScoreUI.SetActive(true);
+        nextLevelPrompt.SetActive(false);
+        canGoToNextLevel = false;
+
+        mainMusicSFX.Play();
+    }
+
     /* Show the time score UI */
     public void ShowVictoryScreen()
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
+        nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";
@@ -100,6 +125,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
+        nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";

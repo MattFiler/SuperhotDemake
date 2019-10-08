@@ -30,6 +30,11 @@ public class LevelLoader : MonoSingleton<LevelLoader>
             ScoreManager.Instance.HideIntroScreen();
             LoadNewLevel(0);
         }
+        if (ScoreManager.Instance.canGoToNextLevel && (Input.GetButtonDown("NES BUTTON B") || Input.GetKeyDown(KeyCode.Space)))
+        {
+            ScoreManager.Instance.HideNextLevelPrompt();
+            LoadNextLevel();
+        }
     }
 
     /* Get the number of levels */

@@ -9,7 +9,9 @@ public class BulletCollision : MonoBehaviour
     /* When a bullet hits something, do stuff */
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetType() == typeof(CircleCollider2D))
+        if (ScoreManager.Instance.canGoToNextLevel) return;
+
+        if (collider.GetType() == typeof(CircleCollider2D))
         {
             return;
         }

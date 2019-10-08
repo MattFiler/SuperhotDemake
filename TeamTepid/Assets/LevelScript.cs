@@ -28,6 +28,6 @@ public class LevelScript : MonoBehaviour
                 return;
             }
         }
-        LevelLoader.Instance.LoadNextLevel();
+        ScoreManager.Instance.ShowNextLevelPrompt();
     }
 }

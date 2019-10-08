@@ -14,6 +14,7 @@ public class ThePlayer : MonoBehaviour
     void FixedUpdate()
     {
         if (isDead) return;
+        if (ScoreManager.Instance.canGoToNextLevel) return;
         if (!isDead) gameObject.SetActive(true);
 
         //Turn the player to the correct direction
