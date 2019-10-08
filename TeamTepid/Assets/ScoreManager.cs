@@ -65,6 +65,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         inGameScoreUI.SetActive(false);
         endGameScoreUI.SetActive(true);
         nextLevelPrompt.SetActive(false);
+        DontDestroyOnLoad(nextLevelPrompt);
         canStartGame = true;
 
         endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "SUPER HOT\n\nPRESS B";
