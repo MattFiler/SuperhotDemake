@@ -53,7 +53,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (!player)
+        if (!player || isDead)
             return;
 
         if (inCombat)
@@ -87,8 +87,18 @@ public class EnemyAI : MonoBehaviour
 
     public void Kill()
     {
-        isDead = true;
+        StartCoroutine(DeathAnim());
+    }
+
+    private IEnumerator DeathAnim()
+    {
         AiDeathSfx.Instance.PlaySFX();
+        isDead = true;
+        for (int i = 1; i < 6; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("enemy_death_" + i);
+        }
         Destroy(gameObject);
     }
 
@@ -138,6 +148,8 @@ public class EnemyAI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead) return;
+
         // Chase/Fighting Code
         if (inCombat)
         { 
