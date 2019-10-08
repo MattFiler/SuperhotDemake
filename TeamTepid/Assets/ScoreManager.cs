@@ -17,6 +17,8 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     [SerializeField] private AudioSource defeatStingSFX;
     private float totalScore = 0;
     private int levelScoreExtra = 0;
+    private bool scoreFrozen = false;
+    private int frozenScore = 0;
 
     [HideInInspector] public List<float> LevelTargetTime = new List<float>();
     private float timeInLevel = 0.0f;
@@ -34,6 +36,8 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     /* Calculate the current score realtime */
     public int CalculateLevelScore()
     {
+        if (scoreFrozen) return frozenScore;
+
         float levelScore = LevelTargetTime[LevelLoader.Instance.GetCurrentLevelIndex()] - timeInLevel;
         if (levelScore <= 0) return 0;
         levelScore *= 10;
@@ -47,12 +51,26 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         levelScoreExtra += value;
     }
 
+    /* Freeze the score decrease */
+    public void FreezeScore()
+    {
+        frozenScore = CalculateLevelScore();
+        scoreFrozen = true;
+    }
+
+    /* Update total score */
+    public void UpdateScore()
+    {
+        totalScore += CalculateLevelScore();
+        ClearTimeScore();
+    }
+
     /* Add to the score based on time in level */
     public void ClearTimeScore()
     {
         timeInLevel = 0.0f;
-        totalScore += CalculateLevelScore();
         levelScoreExtra = 0;
+        scoreFrozen = false;
     }
 
     /* Clear the total score */
@@ -88,6 +106,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         endGameScoreUI.SetActive(false);
         nextLevelPrompt.SetActive(false);
         canStartGame = false;
+        ClearTimeScore();
 
         victorySFX.Stop();
         defeatSFX.Stop();
@@ -98,6 +117,9 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     /* Show "next level" ui prompt */
     public void ShowNextLevelPrompt()
     {
+        if (!canGoToNextLevel) UpdateScore();
+        ClearTimeScore();
+
         inGameScoreUI.SetActive(false);
         nextLevelPrompt.SetActive(true);
         canGoToNextLevel = true;
@@ -123,7 +145,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "YOU WON\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
         victorySFX.Play();
         victoryStingSFX.Play();
         mainMusicSFX.Stop();
@@ -137,7 +159,7 @@ public class ScoreManager : MonoSingleton<ScoreManager>
         nextLevelPrompt.SetActive(false);
         canStartGame = true;
 
-        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + ((int)totalScore-70) + "\n\nPRESS B";
+        endGameScoreUI.transform.Find("Text").GetComponent<Text>().text = "DEFEAT\n\nSCORE: " + (int)totalScore + "\n\nPRESS B";
         defeatSFX.Play();
         defeatStingSFX.Play();
         mainMusicSFX.Stop();

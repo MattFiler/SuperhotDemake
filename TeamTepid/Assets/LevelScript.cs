@@ -18,16 +18,17 @@ public class LevelScript : MonoBehaviour
         }
     }
 
-    /* Monitor isDead state to see if we've won or not */
+    /* Monitor enemy alive states */
     void Update()
     {
+        bool anyAlive = false;
+        bool anySpawned = false;
         foreach (EnemyAI anEnemy in levelEnemies)
         {
-            if (anEnemy != null)
-            {
-                return;
-            }
+            if (anEnemy != null) anySpawned = true;
+            if (anEnemy != null && !anEnemy.isDead) anyAlive = true;
         }
-        ScoreManager.Instance.ShowNextLevelPrompt();
+        if (!anyAlive) ScoreManager.Instance.FreezeScore();
+        if (!anySpawned) ScoreManager.Instance.ShowNextLevelPrompt();
     }
 }
