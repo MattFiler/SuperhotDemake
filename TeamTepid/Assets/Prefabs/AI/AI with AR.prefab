@@ -169,6 +169,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 6692124287208778348, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6692124287208778345, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -228,6 +233,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692124287208778349, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: autoShotCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692124286889930319, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfcfd4c4bb3e3f0459f3dd37feaffc3b, type: 3}

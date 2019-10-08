@@ -45,6 +45,15 @@ public class PropInteraction : MonoBehaviour
 
             canUse = shoot.canShoot;
         }
+
+        if(transform.parent != null)
+        {
+            pickedupObjTag = transform.parent.gameObject.tag;
+        }
+        else
+        {
+            pickedupObjTag = "";
+        }
     }
 
 
@@ -54,7 +63,6 @@ public class PropInteraction : MonoBehaviour
         {
             transform.parent = pickUpTransform;
             transform.position = pickUpTransform.Find("PropPos").position;
-            pickedupObjTag = pickUpTransform.gameObject.tag;
 
             int index = 0;
 

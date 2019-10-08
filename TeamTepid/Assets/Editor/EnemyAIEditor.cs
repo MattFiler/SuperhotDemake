@@ -18,6 +18,8 @@ public class EnemyAIEditor : Editor
         Vector3[] waypoints = new Vector3[t.waypoints.Length+1];
         for (int i = 0; i < t.waypoints.Length; i++)
         {
+            t.waypoints[i].z = -1;
+            waypoints[i].z = -1;
             waypoints[i] = Handles.FreeMoveHandle(t.waypoints[i], Quaternion.identity, 0.1f, Vector3.one, Handles.CircleHandleCap);
             if(i > 0 && i < t.waypoints.Length && t.waypoints.Length > 1)
             {
