@@ -39,15 +39,15 @@ public class ScoreManager : MonoSingleton<ScoreManager>
     {
         if (scoreFrozen) return frozenScore;
 
-        float levelScore = LevelTargetTime[LevelLoader.Instance.GetCurrentLevelIndex()] - timeInLevel;
+        float levelScore = (LevelTargetTime[LevelLoader.Instance.GetCurrentLevelIndex()] + levelScoreExtra) - timeInLevel;
         if (levelScore <= 0) return 0;
         levelScore *= 10;
 
-        return (int)levelScore + levelScoreExtra;
+        return (int)levelScore;
     }
 
     /* Add to the score */
-    public void AddToLevelScore(int value = 100)
+    public void AddToLevelScore(int value = 10)
     {
         levelScoreExtra += value;
     }

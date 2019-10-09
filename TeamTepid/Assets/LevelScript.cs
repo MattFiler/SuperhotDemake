@@ -31,7 +31,14 @@ public class LevelScript : MonoBehaviour
             if (anEnemy != null) playerRef = anEnemy.player.GetComponent<ThePlayer>();
         }
         if (!anyAlive) ScoreManager.Instance.FreezeScore();
-        if (!anySpawned) ScoreManager.Instance.ShowNextLevelPrompt();
+        if (!anySpawned)
+        {
+            ScoreManager.Instance.ShowNextLevelPrompt();
+            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+            {
+                Destroy(bullet);
+            }
+        }
         if (playerRef != null) playerRef.isInvincible = !anyAlive;
     }
 }
